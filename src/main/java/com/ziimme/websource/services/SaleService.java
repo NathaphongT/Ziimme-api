@@ -28,12 +28,12 @@ public class SaleService {
         return this.saleRepository.findAll();
     }
 
-    // public ResponseEntity<Object> findAll(int sale_id) {
-    //     ResponseJson responseJson = new ResponseJson();
-    //     List<Sale> UserList = this.saleRepository.findAll(sale_id);
-    //     responseJson.setData(UserList);
-    //     return new ResponseEntity<>(responseJson, HttpStatus.OK);
-    // }
+    public Sale getById(int sale_id) {
+        Sale sales = this.saleRepository.findById(sale_id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", sale_id));
+
+        return sales;
+    }
 
     public ResponseEntity<Object> findByIdCus(int sale_cus_id) {
         // ResponseJson responseJson = new ResponseJson();
