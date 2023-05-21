@@ -17,10 +17,10 @@ public class Position {
     @Column(name = "position_id")
     private int position_id;
 
-    @Column(name = "province_name_th")
+    @Column(name = "position_name_th")
     private String position_name_th;
 
-    @Column(name = "province_name_eng")
+    @Column(name = "position_name_eng")
     private String position_name_eng;
 
     @Column(name = "record_status")
