@@ -46,6 +46,7 @@ public class SaleService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Sale _sales = new Sale();
+        _sales.setSale_number(sales.getSale_number());
         _sales.setSale_consultant(sales.getSale_consultant());
         _sales.setSale_product(sales.getSale_product());
         _sales.setSale_count(sales.getSale_count());
@@ -65,6 +66,7 @@ public class SaleService {
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
+        _sales.setSale_number(sale.getSale_number());
         _sales.setSale_consultant(sale.getSale_consultant());
         _sales.setSale_product(sale.getSale_product());
         _sales.setSale_count(sale.getSale_count());

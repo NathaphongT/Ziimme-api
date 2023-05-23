@@ -30,7 +30,8 @@ public class CourseService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Course _courses = new Course();
-        _courses.setCourse_name(courses.getCourse_name());
+        _courses.setCourse_name_th(courses.getCourse_name_th());
+        _courses.setCourse_name_eng(courses.getCourse_name_eng());
         _courses.setCourse_code(courses.getCourse_code());
         _courses.setCourse_detail(courses.getCourse_detail());
         _courses.setRecordStatus(GlobalUtil.getActiveStatus());
@@ -45,7 +46,8 @@ public class CourseService {
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        _course.setCourse_name(course.getCourse_name());
+        _course.setCourse_name_th(course.getCourse_name_th());
+        _course.setCourse_name_eng(course.getCourse_name_eng());
         _course.setCourse_code(course.getCourse_code());
         _course.setCourse_detail(course.getCourse_detail());
         _course.setUpdatedBy(username);
