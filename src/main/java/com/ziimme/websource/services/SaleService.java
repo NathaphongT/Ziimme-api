@@ -35,10 +35,17 @@ public class SaleService {
         return sales;
     }
 
+    public ResponseEntity<Object> findByIdSale(int sale_id) {
+        ResponseJson responseJson = new ResponseJson();
+        List<Sale> UserList = this.saleRepository.findByIdSale(sale_id);
+        responseJson.setData(UserList);
+        return new ResponseEntity<>(UserList, HttpStatus.OK);
+    }
+
     public ResponseEntity<Object> findByIdCus(int sale_cus_id) {
-        // ResponseJson responseJson = new ResponseJson();
+        ResponseJson responseJson = new ResponseJson();
         List<Sale> UserList = this.saleRepository.findByIdCus(sale_cus_id);
-        // responseJson.setData(UserList);
+        responseJson.setData(UserList);
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 

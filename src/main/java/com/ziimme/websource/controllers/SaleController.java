@@ -30,11 +30,15 @@ public class SaleController {
         return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "sale/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Sale> getUsersById(@PathVariable("id") int sale_id) {
+    @RequestMapping(value = "sale_base/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Object> getUsersById(@PathVariable("id") int sale_id) {
         return new ResponseEntity<>(this.service.getById(sale_id), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "sale/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Object> getByIdsale(@PathVariable("id") int sale_id) {
+        return service.findByIdSale(sale_id);
+    }
 
     @RequestMapping(value = "sale_cus/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<Object> getByIdcus(@PathVariable("id") int sale_cus_id) {
