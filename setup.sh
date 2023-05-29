@@ -11,8 +11,8 @@ sudo docker rm   $CONTAINER_NAME
 sudo docker rmi  $IMAGE_NAME:$TAG
 # ---------------------------------------------------------------------------
 sudo docker build -t $IMAGE_NAME:$TAG /server/Ziimme-api
-# sudo docker run --name $CONTAINER_NAME \
-#                 --network $NETWORK \
-#                 -p $PUB_PORT:8081 \
-#                 --restart=always \
-#                 -d $IMAGE_NAME:$TAG
+sudo docker run --name $CONTAINER_NAME \
+                --network $NETWORK \
+                -p $PUB_PORT:8081 \
+                --restart=always \
+                -d $IMAGE_NAME:$TAG
