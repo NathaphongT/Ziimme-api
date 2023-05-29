@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.models.Districts;
-import com.ziimme.websource.models.PostCode;
 import com.ziimme.websource.models.Province;
 import com.ziimme.websource.models.SubDistricts;
 import com.ziimme.websource.services.ProvinceService;
@@ -55,14 +54,9 @@ public class ProvinceController {
         return service.fingByidDistrict(districts_id);
     }
 
-    @RequestMapping(value = "postcode", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<PostCode>> getAllPostCode() {
-        return new ResponseEntity<>(this.service.getAllPostCode(), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "postcode/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> fingByidPost(@PathVariable("id") int sub_districts_id) {
-        return service.fingByidPost(sub_districts_id);
+    @RequestMapping(value = "sub/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Object> FingByIdSub(@PathVariable("id") int sub_districts_id) {
+        return service.FingByIdSub(sub_districts_id);
     }
 
 }

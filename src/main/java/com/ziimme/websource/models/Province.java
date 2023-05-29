@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 import lombok.Data;
 
-
 @Data
 @Entity
 @Table(name = "zim_mdm_data_province")
@@ -19,12 +18,6 @@ public class Province {
     @Column(name = "province_name_th")
     private String province_name_th;
 
-    @Column(name = "record_status")
-    private String record_status;
-
-    @Column(name = "created_time")
-    private Date created_time;
-
-    @Column(name = "updated_time")
-    private Date updated_time;
+    @Column(name = "province_name_eng")
+    private String province_name_eng;
 }

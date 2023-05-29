@@ -15,18 +15,15 @@ public class SubDistricts {
     @Column(name = "sub_districts_id")
     private int sub_districts_id;
 
+    @Column(name = "zip_code")
+    private String zip_code;
+
     @Column(name = "sub_districts_name_th")
     private String sub_districts_name_th;
 
-    @Column(name = "record_status")
-    private String record_status;
+    @Column(name = "sub_districts_name_eng")
+    private String sub_districts_name_eng;
 
-    @Column(name = "created_time")
-    private Date created_time;
-
-    @Column(name = "updated_time")
-    private Date updated_time;
-
-    @Column(name = "districts_id")
-    private int districts_id;
+    @Column(name = "districts_code")
+    private int districts_code;
 }

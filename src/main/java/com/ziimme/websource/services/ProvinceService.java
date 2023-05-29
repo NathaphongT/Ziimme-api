@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service;
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
 import com.ziimme.websource.models.Districts;
-import com.ziimme.websource.models.PostCode;
 import com.ziimme.websource.models.Province;
 import com.ziimme.websource.models.SubDistricts;
 import com.ziimme.websource.repository.DistrictsRepository;
-import com.ziimme.websource.repository.PostCodeRepository;
 import com.ziimme.websource.repository.ProvinceRepository;
 import com.ziimme.websource.repository.SubDistrictsRepository;
 
@@ -31,8 +29,6 @@ public class ProvinceService {
     @Autowired
     private SubDistrictsRepository subdistrictsRepository;
 
-    @Autowired
-    private PostCodeRepository postcodeRepository;
 
     public List<Province> getAll() {
         return this.provinceRepository.findAll();
@@ -53,10 +49,6 @@ public class ProvinceService {
         return this.subdistrictsRepository.findAll();
     }
 
-    public List<PostCode> getAllPostCode() {
-        return this.postcodeRepository.findAll();
-    }
-
     // Get By Id Province
     public ResponseEntity<Object> findById(int province_id) {
         ResponseJson responseJson = new ResponseJson();
@@ -74,9 +66,9 @@ public class ProvinceService {
     }
 
     // Get By Id SubDistricts
-    public ResponseEntity<Object> fingByidPost(int sub_districts_id) {
+    public ResponseEntity<Object> FingByIdSub(int sub_districts_id) {
         ResponseJson responseJson = new ResponseJson();
-        List<PostCode> SubList = this.postcodeRepository.findById(sub_districts_id);
+        List<SubDistricts> SubList = this.subdistrictsRepository.findByIdSub(sub_districts_id);
         responseJson.setData(SubList);
         return new ResponseEntity<>(responseJson, HttpStatus.OK);
     }

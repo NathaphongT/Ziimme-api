@@ -11,9 +11,9 @@ import com.ziimme.websource.models.Province;
 
 public interface ProvinceRepository extends JpaRepository<Province, Integer>, JpaSpecificationExecutor<Province> {
 
-    @Query(value = "SELECT u FROM Province u WHERE record_status = 'A' ORDER BY province_id")
+    @Query(value = "SELECT u FROM Province u  ORDER BY province_id")
     List<Province> findAll();
 
-    @Query(value = "SELECT d FROM Province d WHERE record_status = 'A' AND province_id = :id ")
+    @Query(value = "SELECT d FROM Province d WHERE province_id = :id ")
     List<Province> findById(@Param("id") int province_id);
 }

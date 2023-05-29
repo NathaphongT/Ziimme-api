@@ -31,7 +31,7 @@ public class SaleController {
     }
 
     @RequestMapping(value = "sale_base/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> getUsersById(@PathVariable("id") int sale_id) {
+    public ResponseEntity<Sale> getUsersById(@PathVariable("id") int sale_id) {
         return new ResponseEntity<>(this.service.getById(sale_id), HttpStatus.OK);
     }
 
