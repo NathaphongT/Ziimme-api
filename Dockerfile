@@ -1,6 +1,6 @@
 # ------------------------------ Maven ---------------------------------
 FROM maven:3.9-ibmjava
 COPY . .
-RUN mvn clean package
+RUN mvn clean install
 # ------------------------------ Java  ---------------------------------
 
