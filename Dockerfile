@@ -6,4 +6,5 @@ RUN mvn clean package
 # ------------------------------ Java  ---------------------------------
 FROM openjdk:21-slim-buster
 COPY --from=build target/websource-0.0.1-SNAPSHOT.jar .
+COPY --from=build target/classes/application.properties .
 ENTRYPOINT ["java","-jar","/websource-0.0.1-SNAPSHOT.jar"]
