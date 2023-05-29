@@ -1,5 +1,5 @@
 # ------------------------------ Maven ---------------------------------
-FROM maven:3.9-ibmjava-alpine
+FROM maven:3.9-ibmjava
 COPY . .
 RUN mvn clean package
 # ------------------------------ Java  ---------------------------------
