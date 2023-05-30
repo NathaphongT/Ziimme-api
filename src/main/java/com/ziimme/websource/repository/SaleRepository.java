@@ -21,4 +21,7 @@ public interface SaleRepository extends JpaRepository<Sale, Integer>, JpaSpecifi
     @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_cus_id = :id ")
     List<Sale> findByIdCus(@Param("id") int sale_cus_id);
 
+    @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_consultant = :id ")
+    List<Sale> findByIdConsult(@Param("id") int sale_consultant);
+
 }

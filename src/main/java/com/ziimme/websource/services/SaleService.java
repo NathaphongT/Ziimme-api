@@ -49,6 +49,13 @@ public class SaleService {
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
+    public ResponseEntity<Object> findByIdConsult(int sale_consultant) {
+        ResponseJson responseJson = new ResponseJson();
+        List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant);
+        responseJson.setData(UserList);
+        return new ResponseEntity<>(UserList, HttpStatus.OK);
+    }
+
     public Sale create(Sale sales, HttpServletRequest request) {
         String username = this.tokenAuthenticationService.getUsername(request);
 
