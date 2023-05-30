@@ -17,12 +17,6 @@ public class SaleCut {
     @Column(name = "sale_cut_id")
     private int sale_cut_id;
 
-    @Column(name = "sale_cut_number")
-    private int sale_cut_number;
-
-    @Column(name = "sale_cut_product")
-    private int sale_cut_product;
-
     @Column(name = "sale_cut_count")
     private int sale_cut_count;
 
@@ -33,7 +27,7 @@ public class SaleCut {
     private String sale_cut_mark;
 
     @Column(name = "sale_cut_therapist")
-    private String sale_cut_therapist;
+    private int sale_cut_therapist;
 
     @Column(name = "sale_cut_doctor")
     private String sale_cut_doctor;
@@ -52,12 +46,6 @@ public class SaleCut {
 
     @Column(name = "sale_id")
     private int sale_id;
-
-    @Column(name = "sale_number")
-    private int sale_number;
-
-    @Column(name = "sele_cut_date_service")
-    private int sele_cut_date_service;
 
     @Column(name = "record_status")
     private String recordStatus;
