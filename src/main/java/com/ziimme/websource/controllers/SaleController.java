@@ -30,14 +30,24 @@ public class SaleController {
         return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
     }
 
-    // @RequestMapping(value = "sale/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    // public ResponseEntity<Object> getByIdSale(@PathVariable("id") int sale_id) {
-    //     return service.findById(sale_id);
-    // }
+    @RequestMapping(value = "sale_base/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Sale> getUsersById(@PathVariable("id") int sale_id) {
+        return new ResponseEntity<>(this.service.getById(sale_id), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "sale/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Object> getByIdsale(@PathVariable("id") int sale_id) {
+        return service.findByIdSale(sale_id);
+    }
 
     @RequestMapping(value = "sale_cus/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<Object> getByIdcus(@PathVariable("id") int sale_cus_id) {
         return service.findByIdCus(sale_cus_id);
+    }
+
+    @RequestMapping(value = "sale_con/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Object> getByIdConsult(@PathVariable("id") int sale_consultant) {
+        return service.findByIdConsult(sale_consultant);
     }
 
     @RequestMapping(value = "sale", method = RequestMethod.POST, produces = "application/json; charset=utf-8")

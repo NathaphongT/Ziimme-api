@@ -20,8 +20,11 @@ public class Branch {
     @Column(name = "branch_code")
     private String branch_code;
 
-    @Column(name = "branch_name")
-    private String branch_name;
+    @Column(name = "branch_name_th")
+    private String branch_name_th;
+
+    @Column(name = "branch_name_eng")
+    private String branch_name_eng;
 
     @Column(name = "record_status")
     private String recordStatus;

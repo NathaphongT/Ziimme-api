@@ -30,8 +30,9 @@ public class BranchService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Branch _branchs = new Branch();
-        _branchs.setBranch_name(branchs.getBranch_name());
         _branchs.setBranch_code(branchs.getBranch_code());
+        _branchs.setBranch_name_th(branchs.getBranch_name_th());
+        _branchs.setBranch_name_eng(branchs.getBranch_name_eng());
         _branchs.setRecordStatus(GlobalUtil.getActiveStatus());
         _branchs.setCreatedBy(username);
         _branchs.setCreatedTime(GlobalUtil.getCurrentDateTime());
@@ -45,7 +46,8 @@ public class BranchService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         _branch.setBranch_code(branch.getBranch_code());
-        _branch.setBranch_name(branch.getBranch_name());
+        _branch.setBranch_name_th(branch.getBranch_name_th());
+        _branch.setBranch_name_eng(branch.getBranch_name_eng());
         _branch.setUpdatedBy(username);
         _branch.setUpdatedTime(GlobalUtil.getCurrentDateTime());
 

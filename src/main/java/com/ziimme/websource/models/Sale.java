@@ -17,6 +17,9 @@ public class Sale {
     @Column(name = "sale_id")
     private int sale_id;
 
+    @Column(name = "sale_number")
+    private int sale_number;
+
     @Column(name = "sale_consultant")
     private int sale_consultant;
 
@@ -24,7 +27,7 @@ public class Sale {
     private int sale_product;
 
     @Column(name = "sale_count")
-    private String sale_count;
+    private int sale_count;
 
     @Column(name = "sale_pay_balance")
     private int sale_pay_balance;

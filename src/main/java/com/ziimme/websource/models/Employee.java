@@ -36,10 +36,10 @@ public class Employee {
     private String emp_status;
 
     @Column(name = "emp_position")
-    private String emp_position;
+    private int emp_position;
 
     @Column(name = "emp_branch")
-    private String emp_branch;
+    private int emp_branch;
 
     @Column(name = "record_status")
     private String recordStatus;

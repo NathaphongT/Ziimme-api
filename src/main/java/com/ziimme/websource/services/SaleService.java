@@ -28,17 +28,31 @@ public class SaleService {
         return this.saleRepository.findAll();
     }
 
-    // public ResponseEntity<Object> findAll(int sale_id) {
-    //     ResponseJson responseJson = new ResponseJson();
-    //     List<Sale> UserList = this.saleRepository.findAll(sale_id);
-    //     responseJson.setData(UserList);
-    //     return new ResponseEntity<>(responseJson, HttpStatus.OK);
-    // }
+    public Sale getById(int sale_id) {
+        Sale sales = this.saleRepository.findById(sale_id)
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", sale_id));
+
+        return sales;
+    }
+
+    public ResponseEntity<Object> findByIdSale(int sale_id) {
+        ResponseJson responseJson = new ResponseJson();
+        List<Sale> UserList = this.saleRepository.findByIdSale(sale_id);
+        responseJson.setData(UserList);
+        return new ResponseEntity<>(UserList, HttpStatus.OK);
+    }
 
     public ResponseEntity<Object> findByIdCus(int sale_cus_id) {
-        // ResponseJson responseJson = new ResponseJson();
+        ResponseJson responseJson = new ResponseJson();
         List<Sale> UserList = this.saleRepository.findByIdCus(sale_cus_id);
-        // responseJson.setData(UserList);
+        responseJson.setData(UserList);
+        return new ResponseEntity<>(UserList, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Object> findByIdConsult(int sale_consultant) {
+        ResponseJson responseJson = new ResponseJson();
+        List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant);
+        responseJson.setData(UserList);
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
@@ -46,6 +60,7 @@ public class SaleService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Sale _sales = new Sale();
+        _sales.setSale_number(sales.getSale_number());
         _sales.setSale_consultant(sales.getSale_consultant());
         _sales.setSale_product(sales.getSale_product());
         _sales.setSale_count(sales.getSale_count());
@@ -65,6 +80,7 @@ public class SaleService {
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
+        _sales.setSale_number(sale.getSale_number());
         _sales.setSale_consultant(sale.getSale_consultant());
         _sales.setSale_product(sale.getSale_product());
         _sales.setSale_count(sale.getSale_count());

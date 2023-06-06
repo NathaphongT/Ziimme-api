@@ -21,12 +21,15 @@ public class Course {
     @Column(name = "course_code")
     private String course_code;
 
-    @Column(name = "course_name")
-    private String course_name;
+    @Column(name = "course_name_th")
+    private String course_name_th;
+
+    @Column(name = "course_name_eng")
+    private String course_name_eng;
 
     @Column(name = "course_detail")
     private String course_detail;
-    
+
     @Column(name = "record_status")
     private String recordStatus;
 

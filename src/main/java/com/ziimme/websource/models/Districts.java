@@ -18,15 +18,9 @@ public class Districts {
     @Column(name = "districts_name_th")
     private String districts_name_th;
 
-    @Column(name = "record_status")
-    private String record_status;
+    @Column(name = "districts_name_eng")
+    private String districts_name_eng;
 
-    @Column(name = "created_time")
-    private Date created_time;
-
-    @Column(name = "updated_time")
-    private Date updated_time;
-
-    @Column(name = "province_id")
-    private int province_id;
+    @Column(name = "province_code")
+    private int province_code;
 }
