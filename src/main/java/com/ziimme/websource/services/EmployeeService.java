@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.models.Employee;
+import com.ziimme.websource.models.Users;
 import com.ziimme.websource.repository.EmployeeRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
@@ -26,6 +27,13 @@ public class EmployeeService {
         return this.employeeRepository.findAll();
     }
 
+    public Employee getById(int emp_id) {
+        Employee employee = this.employeeRepository.findById(emp_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Emp", "id", emp_id));
+
+        return employee;
+    }
+  
     public Employee create(Employee employees, HttpServletRequest request) {
         String username = this.tokenAuthenticationService.getUsername(request);
 

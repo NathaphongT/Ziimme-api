@@ -49,14 +49,35 @@ public class SaleService {
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> findByIdConsult(int sale_consultant) {
+    public ResponseEntity<Object> findByIdConsult(int sale_consultant_1) {
         ResponseJson responseJson = new ResponseJson();
-        List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant);
+        List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant_1);
         responseJson.setData(UserList);
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
-    public Sale create(Sale sales, HttpServletRequest request) {
+    // public Sale create(Sale sales, HttpServletRequest request) {
+    // String username = this.tokenAuthenticationService.getUsername(request);
+
+    // Sale _sales = new Sale();
+    // _sales.setSale_number(sales.getSale_number());
+    // _sales.setSale_consultant_1(sales.getSale_consultant_1());
+    // _sales.setSale_consultant_2(sales.getSale_consultant_2());
+    // _sales.setSale_consultant_3(sales.getSale_consultant_3());
+    // _sales.setSale_product(sales.getSale_product());
+    // _sales.setSale_count(sales.getSale_count());
+    // _sales.setSale_pay_balance(sales.getSale_pay_balance());
+    // _sales.setSale_pay(sales.getSale_pay());
+    // _sales.setSale_overdue(sales.getSale_overdue());
+    // _sales.setSale_cus_id(sales.getSale_cus_id());
+    // _sales.setRecordStatus(GlobalUtil.getActiveStatus());
+    // _sales.setCreatedBy(username);
+    // _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
+    // return this.saleRepository.save(_sales);
+    // }
+
+    public Sale create(Sale sales, HttpServletRequest request) throws Exception {
+
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Sale _sales = new Sale();
@@ -109,4 +130,5 @@ public class SaleService {
 
         this.saleRepository.save(_sales);
     }
+
 }

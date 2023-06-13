@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.models.Employee;
+import com.ziimme.websource.models.Users;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.services.EmployeeService;
 
@@ -32,6 +33,11 @@ public class EmployeeController {
     @RequestMapping(value = "employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<List<Employee>> getAllLogs() {
         return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "employee/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Employee> getEmpById(@PathVariable("id") int emp_id) {
+        return new ResponseEntity<>(this.service.getById(emp_id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "employee", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
