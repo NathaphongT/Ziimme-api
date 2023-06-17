@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ziimme.websource.json.LoginJson;
 import com.ziimme.websource.json.res.ResponseJson;
-import com.ziimme.websource.security.TokenAuthenticationService;
+// import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.services.AuthService;
 
 @RestController
@@ -18,8 +18,8 @@ import com.ziimme.websource.services.AuthService;
 public class AuthController {
     @Autowired
     private AuthService service;
-    @Autowired
-    private TokenAuthenticationService jwt;
+    // @Autowired
+    // private TokenAuthenticationService jwt;
 
     @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<ResponseJson> login(@RequestBody LoginJson users) {

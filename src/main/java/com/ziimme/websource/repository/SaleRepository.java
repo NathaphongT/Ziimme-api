@@ -1,7 +1,6 @@
 package com.ziimme.websource.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -18,13 +17,10 @@ public interface SaleRepository extends JpaRepository<Sale, Integer>, JpaSpecifi
     @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_id = :id ORDER BY created_time desc")
     List<Sale> findByIdSale(@Param("id") int sale_id);
 
-    @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_cus_id = :id ")
-    List<Sale> findByIdCus(@Param("id") int sale_cus_id);
+    @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND cus_id = :id ")
+    List<Sale> findByIdCus(@Param("id") int cus_id);
 
-    @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_consultant_1 = :id ")
-    List<Sale> findByIdConsult(@Param("id") int sale_consultant_1);
-
-     @Query(value = "SELECT w FROM Sale w WHERE recordStatus = 'A' AND sale_consultant = ?1")
-    Optional<Sale> findBysale_consultant(String sale_consultant);
+    // @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND sale_consultant = :id ")
+    // List<Sale> findByIdConsult(@Param("id") int sale_consultant);
 
 }

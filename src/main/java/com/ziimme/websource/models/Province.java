@@ -1,7 +1,5 @@
 package com.ziimme.websource.models;
 
-import java.util.Date;
-
 import javax.persistence.*;
 
 import lombok.Data;

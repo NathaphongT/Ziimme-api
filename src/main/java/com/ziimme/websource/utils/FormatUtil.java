@@ -3,7 +3,6 @@ package com.ziimme.websource.utils;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class FormatUtil {
     public static String format(long count) {

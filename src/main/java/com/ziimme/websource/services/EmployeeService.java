@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.models.Employee;
-import com.ziimme.websource.models.Users;
 import com.ziimme.websource.repository.EmployeeRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;

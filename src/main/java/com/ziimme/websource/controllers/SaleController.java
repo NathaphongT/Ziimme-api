@@ -41,14 +41,14 @@ public class SaleController {
     }
 
     @RequestMapping(value = "sale_cus/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> getByIdcus(@PathVariable("id") int sale_cus_id) {
-        return service.findByIdCus(sale_cus_id);
+    public ResponseEntity<Object> getByIdcus(@PathVariable("id") int cus_id) {
+        return service.findByIdCus(cus_id);
     }
 
-    @RequestMapping(value = "sale_con/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> getByIdConsult(@PathVariable("id") int sale_consultant_1) {
-        return service.findByIdConsult(sale_consultant_1);
-    }
+    // @RequestMapping(value = "sale_con/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    // public ResponseEntity<Object> getByIdConsult(@PathVariable("id") int sale_consultant) {
+    //     return service.findByIdConsult(sale_consultant);
+    // }
 
     @RequestMapping(value = "sale", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<Sale> createsales(@RequestBody Sale sales, HttpServletRequest request) {

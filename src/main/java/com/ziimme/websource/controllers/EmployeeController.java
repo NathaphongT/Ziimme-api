@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.models.Employee;
-import com.ziimme.websource.models.Users;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.services.EmployeeService;
 

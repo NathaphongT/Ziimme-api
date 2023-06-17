@@ -38,8 +38,8 @@ public class Sale {
     @Column(name = "sale_overdue")
     private int sale_overdue;
 
-    @Column(name = "sale_cus_id")
-    private int sale_cus_id;
+    @Column(name = "cus_id")
+    private int cus_id;
 
     @Column(name = "record_status")
     private String recordStatus;

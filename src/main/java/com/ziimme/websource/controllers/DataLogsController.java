@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.ziimme.websource.json.res.PageResponse;
 import com.ziimme.websource.models.DataLogs;
-import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.services.DataLogService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +22,8 @@ import java.util.List;
 public class DataLogsController {
     @Autowired
     private DataLogService service;
-    @Autowired
-    private TokenAuthenticationService jwt;
+    // @Autowired
+    // private TokenAuthenticationService jwt;
 
     @RequestMapping(value = "/logs", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<PageResponse> searchLogs(

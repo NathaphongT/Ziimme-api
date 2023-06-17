@@ -18,14 +18,37 @@ import com.ziimme.websource.utils.GlobalUtil;
 
 @Service
 public class SaleService {
-    @Autowired
     private SaleRepository saleRepository;
+    private TokenAuthenticationService tokenAuthenticationService;
 
     @Autowired
-    private TokenAuthenticationService tokenAuthenticationService;
+    public void setSaleService(SaleRepository saleRepository,
+            TokenAuthenticationService tokenAuthenticationService) {
+        this.saleRepository = saleRepository;
+        this.tokenAuthenticationService = tokenAuthenticationService;
+    }
 
     public List<Sale> getAll() {
         return this.saleRepository.findAll();
+    }
+
+    public Sale create(Sale sales, HttpServletRequest request) throws Exception {
+
+        String username = this.tokenAuthenticationService.getUsername(request);
+
+        Sale _sales = new Sale();
+        _sales.setSale_number(sales.getSale_number());
+        _sales.setSale_consultant(sales.getSale_consultant());
+        _sales.setSale_product(sales.getSale_product());
+        _sales.setSale_count(sales.getSale_count());
+        _sales.setSale_pay_balance(sales.getSale_pay_balance());
+        _sales.setSale_pay(sales.getSale_pay());
+        _sales.setSale_overdue(sales.getSale_overdue());
+        _sales.setCus_id(sales.getCus_id());
+        _sales.setRecordStatus(GlobalUtil.getActiveStatus());
+        _sales.setCreatedBy(username);
+        _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
+        return this.saleRepository.save(_sales);
     }
 
     public Sale getById(int sale_id) {
@@ -42,58 +65,37 @@ public class SaleService {
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> findByIdCus(int sale_cus_id) {
+    public ResponseEntity<Object> findByIdCus(int cus_id) {
         ResponseJson responseJson = new ResponseJson();
-        List<Sale> UserList = this.saleRepository.findByIdCus(sale_cus_id);
+        List<Sale> UserList = this.saleRepository.findByIdCus(cus_id);
         responseJson.setData(UserList);
         return new ResponseEntity<>(UserList, HttpStatus.OK);
     }
 
-    public ResponseEntity<Object> findByIdConsult(int sale_consultant_1) {
-        ResponseJson responseJson = new ResponseJson();
-        List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant_1);
-        responseJson.setData(UserList);
-        return new ResponseEntity<>(UserList, HttpStatus.OK);
-    }
+    // public ResponseEntity<Object> findByIdConsult(int sale_consultant) {
+    // ResponseJson responseJson = new ResponseJson();
+    // List<Sale> UserList = this.saleRepository.findByIdConsult(sale_consultant);
+    // responseJson.setData(UserList);
+    // return new ResponseEntity<>(UserList, HttpStatus.OK);
+    // }
 
     // public Sale create(Sale sales, HttpServletRequest request) {
     // String username = this.tokenAuthenticationService.getUsername(request);
 
     // Sale _sales = new Sale();
     // _sales.setSale_number(sales.getSale_number());
-    // _sales.setSale_consultant_1(sales.getSale_consultant_1());
-    // _sales.setSale_consultant_2(sales.getSale_consultant_2());
-    // _sales.setSale_consultant_3(sales.getSale_consultant_3());
+    // _sales.setSale_consultant(sales.getSale_consultant());
     // _sales.setSale_product(sales.getSale_product());
     // _sales.setSale_count(sales.getSale_count());
     // _sales.setSale_pay_balance(sales.getSale_pay_balance());
     // _sales.setSale_pay(sales.getSale_pay());
     // _sales.setSale_overdue(sales.getSale_overdue());
-    // _sales.setSale_cus_id(sales.getSale_cus_id());
+    // _sales.setcus_id(sales.getcus_id());
     // _sales.setRecordStatus(GlobalUtil.getActiveStatus());
     // _sales.setCreatedBy(username);
     // _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
     // return this.saleRepository.save(_sales);
     // }
-
-    public Sale create(Sale sales, HttpServletRequest request) throws Exception {
-
-        String username = this.tokenAuthenticationService.getUsername(request);
-
-        Sale _sales = new Sale();
-        _sales.setSale_number(sales.getSale_number());
-        _sales.setSale_consultant(sales.getSale_consultant());
-        _sales.setSale_product(sales.getSale_product());
-        _sales.setSale_count(sales.getSale_count());
-        _sales.setSale_pay_balance(sales.getSale_pay_balance());
-        _sales.setSale_pay(sales.getSale_pay());
-        _sales.setSale_overdue(sales.getSale_overdue());
-        _sales.setSale_cus_id(sales.getSale_cus_id());
-        _sales.setRecordStatus(GlobalUtil.getActiveStatus());
-        _sales.setCreatedBy(username);
-        _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
-        return this.saleRepository.save(_sales);
-    }
 
     public Sale update(int sale_id, Sale sale, HttpServletRequest request) {
         Sale _sales = this.saleRepository.findById(sale_id)
@@ -108,7 +110,7 @@ public class SaleService {
         _sales.setSale_pay_balance(sale.getSale_pay_balance());
         _sales.setSale_pay(sale.getSale_pay());
         _sales.setSale_overdue(sale.getSale_overdue());
-        _sales.setSale_cus_id(sale.getSale_cus_id());
+        _sales.setCus_id(sale.getCus_id());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setUpdatedBy(username);
         _sales.setUpdatedTime(GlobalUtil.getCurrentDateTime());
