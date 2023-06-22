@@ -20,9 +20,6 @@ public class Sale {
     @Column(name = "sale_number")
     private int sale_number;
 
-    @Column(name = "sale_consultant")
-    private int sale_consultant;
-
     @Column(name = "sale_product")
     private int sale_product;
 

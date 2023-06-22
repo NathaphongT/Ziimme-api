@@ -32,25 +32,6 @@ public class SaleService {
         return this.saleRepository.findAll();
     }
 
-    public Sale create(Sale sales, HttpServletRequest request) throws Exception {
-
-        String username = this.tokenAuthenticationService.getUsername(request);
-
-        Sale _sales = new Sale();
-        _sales.setSale_number(sales.getSale_number());
-        _sales.setSale_consultant(sales.getSale_consultant());
-        _sales.setSale_product(sales.getSale_product());
-        _sales.setSale_count(sales.getSale_count());
-        _sales.setSale_pay_balance(sales.getSale_pay_balance());
-        _sales.setSale_pay(sales.getSale_pay());
-        _sales.setSale_overdue(sales.getSale_overdue());
-        _sales.setCus_id(sales.getCus_id());
-        _sales.setRecordStatus(GlobalUtil.getActiveStatus());
-        _sales.setCreatedBy(username);
-        _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
-        return this.saleRepository.save(_sales);
-    }
-
     public Sale getById(int sale_id) {
         Sale sales = this.saleRepository.findById(sale_id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", sale_id));
@@ -97,6 +78,24 @@ public class SaleService {
     // return this.saleRepository.save(_sales);
     // }
 
+    public Sale create(Sale sales, HttpServletRequest request) throws Exception {
+
+        String username = this.tokenAuthenticationService.getUsername(request);
+
+        Sale _sales = new Sale();
+        _sales.setSale_number(sales.getSale_number());
+        _sales.setSale_product(sales.getSale_product());
+        _sales.setSale_count(sales.getSale_count());
+        _sales.setSale_pay_balance(sales.getSale_pay_balance());
+        _sales.setSale_pay(sales.getSale_pay());
+        _sales.setSale_overdue(sales.getSale_overdue());
+        _sales.setCus_id(sales.getCus_id());
+        _sales.setRecordStatus(GlobalUtil.getActiveStatus());
+        _sales.setCreatedBy(username);
+        _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
+        return this.saleRepository.save(_sales);
+    }
+
     public Sale update(int sale_id, Sale sale, HttpServletRequest request) {
         Sale _sales = this.saleRepository.findById(sale_id)
                 .orElseThrow(() -> new ResourceNotFoundException("Sale", "id", sale_id));
@@ -104,7 +103,6 @@ public class SaleService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         _sales.setSale_number(sale.getSale_number());
-        _sales.setSale_consultant(sale.getSale_consultant());
         _sales.setSale_product(sale.getSale_product());
         _sales.setSale_count(sale.getSale_count());
         _sales.setSale_pay_balance(sale.getSale_pay_balance());
