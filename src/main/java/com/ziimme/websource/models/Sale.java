@@ -15,40 +15,43 @@ public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sale_id")
-    private int sale_id;
+    private int saleId;
 
     @Column(name = "sale_number")
-    private int sale_number;
+    private int saleNumber;
 
     @Column(name = "sale_product")
-    private int sale_product;
+    private int saleProduct;
 
     @Column(name = "sale_count")
-    private int sale_count;
+    private int saleCount;
 
     @Column(name = "sale_pay_balance")
-    private int sale_pay_balance;
+    private int salePayBalance;
 
     @Column(name = "sale_pay")
-    private int sale_pay;
+    private int salePay;
 
     @Column(name = "sale_overdue")
-    private int sale_overdue;
+    private int saleOverdue;
 
     @Column(name = "cus_id")
-    private int cus_id;
+    private int cusId;
 
     @Column(name = "record_status")
     private String recordStatus;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "use_status")
+    private String useStatus;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "created_time")
     private Date createdTime;
 
     @Column(name = "created_by")
     private String createdBy;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "updated_time")
     private Date updatedTime;
 

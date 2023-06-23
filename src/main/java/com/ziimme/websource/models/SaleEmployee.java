@@ -25,14 +25,14 @@ public class SaleEmployee {
     @Column(name = "record_status")
     private String recordStatus;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "created_time")
     private Date createdTime;
 
     @Column(name = "created_by")
     private String createdBy;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "updated_time")
     private Date updatedTime;
 
@@ -86,7 +86,6 @@ public class SaleEmployee {
     public void setRecordStatus(String recordStatus) {
         this.recordStatus = recordStatus;
     }
-
 
     public Date getCreatedTime() {
         return createdTime;

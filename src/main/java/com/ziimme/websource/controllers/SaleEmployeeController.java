@@ -27,7 +27,7 @@ public class SaleEmployeeController {
     @Autowired
     SaleEmployeeService service;
 
-    @RequestMapping(value = "sales/{sale_id}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "sales/{sale_id:.*}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<List<SaleEmployee>> getAllWarehouseFarmCategory(
             @PathVariable(value = "sale_id") int sale_id) {
         return new ResponseEntity<>(this.service.getByWarehouseId(sale_id), HttpStatus.OK);
