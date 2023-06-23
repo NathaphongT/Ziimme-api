@@ -34,6 +34,11 @@ public class EmployeeController {
         return new ResponseEntity<>(this.service.getAll(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "employee/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Employee> getEmpById(@PathVariable("id") int emp_id) {
+        return new ResponseEntity<>(this.service.getById(emp_id), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "employee", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<Employee> createEmployees(@RequestBody Employee employees, HttpServletRequest request) {
         try {

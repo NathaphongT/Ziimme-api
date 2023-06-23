@@ -1,14 +1,11 @@
 package com.ziimme.websource.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
@@ -16,7 +13,7 @@ import com.ziimme.websource.models.Users;
 import com.ziimme.websource.repository.UsersRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
-import com.ziimme.websource.utils.LogsUtil;
+// import com.ziimme.websource.utils.LogsUtil;
 
 @Service
 public class UserService {
@@ -27,8 +24,8 @@ public class UserService {
     @Autowired
     private TokenAuthenticationService tokenAuthenticationService;
 
-    @Autowired
-    private LogsUtil logsUtil;
+    // @Autowired
+    // private LogsUtil logsUtil;
 
     public List<Users> getAll() {
         return this.usersRepository.findAll();

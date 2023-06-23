@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.models.Branch;
 import com.ziimme.websource.services.BranchService;
-import com.ziimme.websource.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "*")

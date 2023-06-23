@@ -1,15 +1,12 @@
 package com.ziimme.websource.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
 import com.ziimme.websource.models.Districts;
 import com.ziimme.websource.models.Province;
@@ -29,16 +26,8 @@ public class ProvinceService {
     @Autowired
     private SubDistrictsRepository subdistrictsRepository;
 
-
     public List<Province> getAll() {
         return this.provinceRepository.findAll();
-    }
-
-    public ResponseEntity<Object> findByIdProvince(int province_id) {
-        ResponseJson responseJson = new ResponseJson();
-        List<Province> UserList = this.provinceRepository.findById(province_id);
-        responseJson.setData(UserList);
-        return new ResponseEntity<>(responseJson, HttpStatus.OK);
     }
 
     public List<Districts> getAllDistricts() {
@@ -47,6 +36,13 @@ public class ProvinceService {
 
     public List<SubDistricts> getAllSubDistricts() {
         return this.subdistrictsRepository.findAll();
+    }
+
+    public ResponseEntity<Object> findByIdProvince(int province_id) {
+        ResponseJson responseJson = new ResponseJson();
+        List<Province> UserList = this.provinceRepository.findById(province_id);
+        responseJson.setData(UserList);
+        return new ResponseEntity<>(responseJson, HttpStatus.OK);
     }
 
     // Get By Id Province
