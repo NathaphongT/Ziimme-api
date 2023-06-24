@@ -5,38 +5,64 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.models.Branch;
+import com.ziimme.websource.models.BranchSpecification;
 import com.ziimme.websource.repository.BranchRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
+import com.ziimme.websource.utils.LogsUtil;
 
 @Service
 public class BranchService {
 
-    @Autowired
     private BranchRepository branchRepository;
+    private BranchSpecification branchSpecification;
+    private TokenAuthenticationService tokenAuthenticationService;
 
     @Autowired
-    private TokenAuthenticationService tokenAuthenticationService;
+    private LogsUtil logsUtil;
+
+    @Autowired
+    public void setFarmCategoryService(BranchRepository branchRepository,
+            BranchSpecification branchSpecification,
+            TokenAuthenticationService tokenAuthenticationService) {
+        this.branchRepository = branchRepository;
+        this.branchSpecification = branchSpecification;
+        this.tokenAuthenticationService = tokenAuthenticationService;
+    }
 
     public List<Branch> getAll() {
         return this.branchRepository.findAll();
     }
 
-    public Branch create(Branch branchs, HttpServletRequest request) {
+    public Page<Branch> search(String q, Pageable pageable) {
+        return this.branchRepository.findAll(branchSpecification.search(q), pageable);
+    }
+
+    public Branch getById(int branchId) {
+        Branch branch = this.branchRepository.findById(branchId)
+                .orElseThrow(() -> new ResourceNotFoundException("Branch", "id", branchId));
+
+        return branch;
+    }
+
+    public Branch create(Branch branch, HttpServletRequest request) {
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        Branch _branchs = new Branch();
-        _branchs.setBranch_code(branchs.getBranch_code());
-        _branchs.setBranch_name_th(branchs.getBranch_name_th());
-        _branchs.setBranch_name_eng(branchs.getBranch_name_eng());
-        _branchs.setRecordStatus(GlobalUtil.getActiveStatus());
-        _branchs.setCreatedBy(username);
-        _branchs.setCreatedTime(GlobalUtil.getCurrentDateTime());
-        return this.branchRepository.save(_branchs);
+        Branch _branch = new Branch();
+        _branch.setBranchCode(branch.getBranchCode());
+        _branch.setBranchNameTh(branch.getBranchNameTh());
+        _branch.setBranchNameEng(branch.getBranchNameEng());
+        _branch.setRecordStatus(GlobalUtil.getActiveStatus());
+        _branch.setCreatedBy(username);
+        _branch.setCreatedTime(GlobalUtil.getCurrentDateTime());
+
+        return this.branchRepository.save(_branch);
     }
 
     public Branch update(int branch_id, Branch branch, HttpServletRequest request) {
@@ -45,9 +71,9 @@ public class BranchService {
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        _branch.setBranch_code(branch.getBranch_code());
-        _branch.setBranch_name_th(branch.getBranch_name_th());
-        _branch.setBranch_name_eng(branch.getBranch_name_eng());
+        _branch.setBranchCode(branch.getBranchCode());
+        _branch.setBranchNameTh(branch.getBranchNameTh());
+        _branch.setBranchNameEng(branch.getBranchNameEng());
         _branch.setUpdatedBy(username);
         _branch.setUpdatedTime(GlobalUtil.getCurrentDateTime());
 

@@ -5,10 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.models.Course;
+import com.ziimme.websource.models.CourseSpecification;
+
 import com.ziimme.websource.repository.CourseRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
@@ -16,40 +20,59 @@ import com.ziimme.websource.utils.GlobalUtil;
 @Service
 public class CourseService {
 
-    @Autowired
     private CourseRepository courseRepository;
+    private CourseSpecification courseSpecification;
+    private TokenAuthenticationService tokenAuthenticationService;
 
     @Autowired
-    private TokenAuthenticationService tokenAuthenticationService;
+    public void setWarehouseService(
+            CourseRepository courseRepository,
+            CourseSpecification courseSpecification,
+            TokenAuthenticationService tokenAuthenticationService) {
+        this.courseRepository = courseRepository;
+        this.courseSpecification = courseSpecification;
+        this.tokenAuthenticationService = tokenAuthenticationService;
+    }
 
     public List<Course> getAll() {
         return this.courseRepository.findAll();
     }
 
-    public Course create(Course courses, HttpServletRequest request) {
-        String username = this.tokenAuthenticationService.getUsername(request);
-
-        Course _courses = new Course();
-        _courses.setCourse_name_th(courses.getCourse_name_th());
-        _courses.setCourse_name_eng(courses.getCourse_name_eng());
-        _courses.setCourse_code(courses.getCourse_code());
-        _courses.setCourse_detail(courses.getCourse_detail());
-        _courses.setRecordStatus(GlobalUtil.getActiveStatus());
-        _courses.setCreatedBy(username);
-        _courses.setCreatedTime(GlobalUtil.getCurrentDateTime());
-        return this.courseRepository.save(_courses);
+    public Page<Course> search(String q, Pageable pageable) {
+        return this.courseRepository.findAll(courseSpecification.searchByName(q), pageable);
     }
 
-    public Course update(int course_id, Course course, HttpServletRequest request) {
-        Course _course = this.courseRepository.findById(course_id)
-                .orElseThrow(() -> new ResourceNotFoundException("Course", "id", course_id));
+    public Course getById(int courseId) {
+        Course course = this.courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Position", "id", courseId));
+
+        return course;
+    }
+
+    public Course create(Course course, HttpServletRequest request) {
+        String username = this.tokenAuthenticationService.getUsername(request);
+
+        Course _course = new Course();
+        _course.setCourseNameTh(course.getCourseNameTh());
+        _course.setCourseNameEng(course.getCourseNameEng());
+        _course.setCourseCode(course.getCourseCode());
+        _course.setCourseDetail(course.getCourseDetail());
+        _course.setRecordStatus(GlobalUtil.getActiveStatus());
+        _course.setCreatedBy(username);
+        _course.setCreatedTime(GlobalUtil.getCurrentDateTime());
+        return this.courseRepository.save(_course);
+    }
+
+    public Course update(int courseId, Course course, HttpServletRequest request) {
+        Course _course = this.courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        _course.setCourse_name_th(course.getCourse_name_th());
-        _course.setCourse_name_eng(course.getCourse_name_eng());
-        _course.setCourse_code(course.getCourse_code());
-        _course.setCourse_detail(course.getCourse_detail());
+        _course.setCourseNameTh(course.getCourseNameTh());
+        _course.setCourseNameEng(course.getCourseNameEng());
+        _course.setCourseCode(course.getCourseCode());
+        _course.setCourseDetail(course.getCourseDetail());
         _course.setUpdatedBy(username);
         _course.setUpdatedTime(GlobalUtil.getCurrentDateTime());
 
@@ -58,9 +81,9 @@ public class CourseService {
         return _course;
     }
 
-    public void delete(int course_id, HttpServletRequest request) {
-        Course _course = this.courseRepository.findById(course_id)
-                .orElseThrow(() -> new ResourceNotFoundException("Course", "id", course_id));
+    public void delete(int courseId, HttpServletRequest request) {
+        Course _course = this.courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
