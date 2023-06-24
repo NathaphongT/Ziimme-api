@@ -1,32 +1,33 @@
 package com.ziimme.websource.models;
 
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Component;
 import javax.persistence.criteria.Predicate;
 
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
+
 @Component
-public class EmployeeSpecification {
-    public Specification<Employee> searchByName(String q) {
+public class PositionSpecification {
+    public Specification<Position> searchByName(String q) {
         return (root, query, cb) -> {
-            Predicate nameFull = cb.like(
-                    root.get("empFullname"),
+            Predicate nameTh = cb.like(
+                    root.get("positionNameTh"),
                     "%" + q + "%");
 
-            Predicate nameNick = cb.like(
-                    root.get("empNickname"),
+            Predicate nameEn = cb.like(
+                    root.get("positionNameEng"),
                     "%" + q + "%");
 
-            return cb.or(nameFull, nameNick);
+            return cb.or(nameTh, nameEn);
         };
     }
 
-    public Specification<Employee> byActiveStatus() {
+    public Specification<Position> byActiveStatus() {
         return (root, query, cb) -> cb.equal(
                 root.get("recordStatus"),
                 "A");
     }
 
-    public Specification<Employee> search(String q) {
+    public Specification<Position> search(String q) {
         Specification specification;
 
         specification = Specification.where(byActiveStatus());

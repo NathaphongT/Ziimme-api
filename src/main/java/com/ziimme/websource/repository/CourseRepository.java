@@ -3,22 +3,21 @@ package com.ziimme.websource.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.ziimme.websource.models.Course;
+import com.ziimme.websource.models.Employee;
 
 public interface CourseRepository extends JpaRepository<Course, Integer>, JpaSpecificationExecutor<Course> {
 
-    @Query(value = "SELECT u FROM Course u WHERE recordStatus = 'A' ORDER BY course_id")
+    @Query(value = "SELECT fc FROM Course fc WHERE recordStatus = 'A' ORDER BY courseId")
     List<Course> findAll();
-
-    @Query(value = "SELECT u FROM Course u WHERE course_name = :course_name AND recordStatus = 'A'")
-    Optional<Course> findBycourse_name(@Param("course_name") String course_name);
-
-    @Query(value = "SELECT u FROM Course u WHERE course_name = :course_name AND recordStatus = 'A'")
-    Optional<Course> findcourse_name(@Param("course_name") String course_name);
+    Page<Course> findAll(Specification<Course> specification, Pageable pageable);
 
 }
