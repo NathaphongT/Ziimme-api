@@ -30,7 +30,7 @@ public class Users {
     private String userRole;
 
     @Column(name = "branch_name")
-    private String branch_name;
+    private String branchName;
 
     @Column(name = "record_status")
     private String recordStatus;
