@@ -15,6 +15,7 @@ import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
 import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleSpecification;
+import com.ziimme.websource.models.Users;
 import com.ziimme.websource.repository.SaleRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
@@ -39,8 +40,8 @@ public class SaleService {
         return this.saleRepository.findAll();
     }
 
-    public Page<Sale> search(String q, String useStatus, int type, Pageable pageable) {
-        return this.saleRepository.findAll(saleSpecification.search(q, useStatus, type), pageable);
+    public Page<Sale> search(String q, Pageable pageable) {
+        return this.saleRepository.findAll(saleSpecification.searchByName(q), pageable);
     }
 
     public Sale getById(int saleId) {

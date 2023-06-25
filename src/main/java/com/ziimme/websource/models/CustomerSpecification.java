@@ -1,18 +1,20 @@
 package com.ziimme.websource.models;
 
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.Predicate;
 
+@Component
 public class CustomerSpecification {
     public Specification<Customer> searchByName(String q) {
         return (root, query, cb) -> {
             Predicate nameTh = cb.like(
-                    root.get("cus_member"),
+                    root.get("cusMember"),
                     "%" + q + "%");
 
             Predicate nameEn = cb.like(
-                    root.get("cus_full_name"),
+                    root.get("cusFullName"),
                     "%" + q + "%");
 
             return cb.or(nameTh, nameEn);

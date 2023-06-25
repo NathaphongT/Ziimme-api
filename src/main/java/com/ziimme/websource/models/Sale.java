@@ -35,14 +35,11 @@ public class Sale {
     @Column(name = "sale_overdue")
     private int saleOverdue;
 
-    @Column(name = "cus_id")
+    @Column(name = "cusId")
     private int cusId;
 
     @Column(name = "record_status")
     private String recordStatus;
-
-    @Column(name = "use_status")
-    private String useStatus;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "created_time")

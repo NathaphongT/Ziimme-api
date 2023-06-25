@@ -14,13 +14,16 @@ public class SaleEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "consultant_id")
-    private int consultant_id;
+    private int consultantId;
 
     @Column(name = "sale_id")
-    private int sale_id;
+    private int saleId;
 
     @Column(name = "emp_id")
-    private int emp_id;
+    private int empId;
+
+    @Column(name = "cusId")
+    private int cusId;
 
     @Column(name = "record_status")
     private String recordStatus;
@@ -43,40 +46,49 @@ public class SaleEmployee {
 
     }
 
-    public SaleEmployee(int emp_id, int sale_id) {
-        this.emp_id = emp_id;
-        this.sale_id = sale_id;
+    public SaleEmployee(int empId, int saleId, int cusId) {
+        this.empId = empId;
+        this.saleId = saleId;
+        this.cusId = cusId;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "SaleEmployee[consultant_id=%d, emp_id=%d, sale_id=%d]",
-                consultant_id, emp_id, sale_id);
+                "SaleEmployee[consultantId=%d, empId=%d, saleId=%d, cusId=%d]",
+                consultantId, empId, saleId, cusId);
     }
 
-    public int getconsultant_id() {
-        return consultant_id;
+    public int getconsultantId() {
+        return consultantId;
     }
 
-    public void setconsultant_id(int consultant_id) {
-        this.consultant_id = consultant_id;
+    public void setconsultantId(int consultantId) {
+        this.consultantId = consultantId;
     }
 
-    public int getsale_id() {
-        return sale_id;
+    public int getsaleId() {
+        return saleId;
     }
 
-    public void setsale_id(int sale_id) {
-        this.sale_id = sale_id;
+    public void setsaleId(int saleId) {
+        this.saleId = saleId;
     }
 
-    public int getemp_id() {
-        return emp_id;
+    public int getempId() {
+        return empId;
     }
 
-    public void setemp_id(int emp_id) {
-        this.emp_id = emp_id;
+    public void setempId(int empId) {
+        this.empId = empId;
+    }
+
+    public int getcusId() {
+        return cusId;
+    }
+
+    public void setcusId(int cusId) {
+        this.cusId = cusId;
     }
 
     public String getRecordStatus() {

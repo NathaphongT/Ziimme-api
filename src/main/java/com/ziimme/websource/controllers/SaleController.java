@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.json.res.PageResponse;
 import com.ziimme.websource.models.Sale;
+import com.ziimme.websource.models.Users;
 import com.ziimme.websource.services.SaleService;
 
 @RestController
@@ -35,7 +36,6 @@ public class SaleController {
     @RequestMapping(value = "sales", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<PageResponse> searchWarehouse(
             @RequestParam(required = false) String q,
-            @RequestParam(required = false) String useStatus,
             @RequestParam(defaultValue = "1", required = false) int page,
             @RequestParam(defaultValue = "10", required = false) int limit,
             @RequestParam(defaultValue = "0", required = false) int saleId,
@@ -51,7 +51,7 @@ public class SaleController {
 
             Pageable paging = PageRequest.of(page - 1, limit, direction, sort);
 
-            Page<Sale> salePage = this.service.search(q, useStatus, saleId, paging);
+            Page<Sale> salePage = this.service.search(q, paging);
             sales = salePage.getContent();
 
             PageResponse response = new PageResponse();
@@ -67,12 +67,12 @@ public class SaleController {
     }
 
     @RequestMapping(value = "sales/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Sale> getWarehouseById(@PathVariable("id") int saleId) {
+    public ResponseEntity<Sale> getSaleById(@PathVariable("id") int saleId) {
         return new ResponseEntity<>(this.service.getById(saleId), HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "sales", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Sale> createsales(@RequestBody Sale sales, HttpServletRequest request) {
+    public ResponseEntity<Sale> createSales(@RequestBody Sale sales, HttpServletRequest request) {
         try {
             return new ResponseEntity<>(this.service.create(sales, request), HttpStatus.CREATED);
         } catch (Exception e) {

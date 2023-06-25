@@ -1,5 +1,7 @@
 package com.ziimme.websource.models;
 
+import javax.persistence.criteria.Predicate;
+
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +19,10 @@ public class UsersSpecification {
                 "A");
     }
 
-    public Specification<Users> search(String q, String useStatus, int type) {
+    public Specification<Users> search(String q) {
         Specification specification;
 
         specification = Specification.where(byActiveStatus());
-
         if (q != null && !q.isEmpty()) {
             specification = specification.and(searchByName(q));
         }

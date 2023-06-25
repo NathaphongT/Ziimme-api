@@ -29,13 +29,24 @@ public class SaleEmployeeService {
     @Autowired
     private TokenAuthenticationService tokenAuthenticationService;
 
-    public List<SaleEmployee> getByWarehouseId(int sale_id) {
-        this.saleRepository.findById(sale_id)
-                .orElseThrow(() -> new ResourceNotFoundException("sale_id", "id",
-                        sale_id));
+    public List<SaleEmployee> getByWarehouseId(int saleId) {
+        this.saleRepository.findById(saleId)
+                .orElseThrow(() -> new ResourceNotFoundException("saleId", "id",
+                        saleId));
 
         List<SaleEmployee> warehouseFarmCategories = this.saleEmployeeRepository
-                .findByIdSale(sale_id);
+                .findByIdSale(saleId);
+
+        return warehouseFarmCategories;
+    }
+
+    public List<SaleEmployee> getByWarehouseIdEmp(int empId) {
+        this.saleRepository.findById(empId)
+                .orElseThrow(() -> new ResourceNotFoundException("empId", "id",
+                        empId));
+
+        List<SaleEmployee> warehouseFarmCategories = this.saleEmployeeRepository
+                .findByIdEmp(empId);
 
         return warehouseFarmCategories;
     }
@@ -47,20 +58,21 @@ public class SaleEmployeeService {
     // return warehouseFarmCategories;
     // }
 
-    public List<SaleEmployee> create(int sale_id, List<SaleEmployee> SaleEmployee, HttpServletRequest request) {
-        this.saleRepository.findById(sale_id)
-                .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", sale_id));
+    public List<SaleEmployee> create(int saleId, List<SaleEmployee> SaleEmployee, HttpServletRequest request) {
+        this.saleRepository.findById(saleId)
+                .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", saleId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
         List<SaleEmployee> _SaleEmployee = new ArrayList<SaleEmployee>();
         for (SaleEmployee SaleEmployees : SaleEmployee) {
             SaleEmployee SaleEmps = new SaleEmployee();
-            SaleEmps.setemp_id(SaleEmployees.getemp_id());
+            SaleEmps.setempId(SaleEmployees.getempId());
+            SaleEmps.setcusId(SaleEmployees.getcusId());
             SaleEmps.setRecordStatus(GlobalUtil.getActiveStatus());
             SaleEmps.setCreatedBy(username);
             SaleEmps.setCreatedTime(GlobalUtil.getCurrentDateTime());
-            SaleEmps.setsale_id(sale_id);
+            SaleEmps.setsaleId(saleId);
 
             _SaleEmployee.add(SaleEmps);
         }
@@ -69,20 +81,21 @@ public class SaleEmployeeService {
         return _warehouseFarmCategories;
     }
 
-    public List<SaleEmployee> update(int sale_id, List<SaleEmployee> SaleEmployee, HttpServletRequest request) {
-        this.saleRepository.findById(sale_id)
-                .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", sale_id));
+    public List<SaleEmployee> update(int saleId, List<SaleEmployee> SaleEmployee, HttpServletRequest request) {
+        this.saleRepository.findById(saleId)
+                .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", saleId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
         List<SaleEmployee> _SaleEmployee = new ArrayList<SaleEmployee>();
         for (SaleEmployee SaleEmployees : SaleEmployee) {
             SaleEmployee SaleEmps = new SaleEmployee();
-            SaleEmps.setemp_id(SaleEmployees.getemp_id());
+            SaleEmps.setempId(SaleEmployees.getempId());
+            SaleEmps.setcusId(SaleEmployees.getcusId());
             SaleEmps.setRecordStatus(GlobalUtil.getActiveStatus());
             SaleEmps.setUpdatedBy(username);
             SaleEmps.setUpdatedTime(GlobalUtil.getCurrentDateTime());
-            SaleEmps.setsale_id(sale_id);
+            SaleEmps.setsaleId(saleId);
 
             _SaleEmployee.add(SaleEmps);
         }
@@ -91,11 +104,11 @@ public class SaleEmployeeService {
         return _warehouseFarmCategories;
     }
 
-    // public void delete(int consultant_id, HttpServletRequest request) {
+    // public void delete(int consultantId, HttpServletRequest request) {
     // SaleEmployee _warehouseFarmCategory =
-    // this.saleEmployeeRepository.findById(consultant_id)
+    // this.saleEmployeeRepository.findById(consultantId)
     // .orElseThrow(() -> new ResourceNotFoundException("SaleEmpId", "id",
-    // consultant_id));
+    // consultantId));
 
     // String username = this.tokenAuthenticationService.getUsername(request);
 
@@ -106,13 +119,13 @@ public class SaleEmployeeService {
     // this.saleEmployeeRepository.save(_warehouseFarmCategory);
     // }
 
-    // public void deleteBySaleId(int sale_id, HttpServletRequest request) {
-    // this.saleRepository.findById(sale_id)
+    // public void deleteBySaleId(int saleId, HttpServletRequest request) {
+    // this.saleRepository.findById(saleId)
     // .orElseThrow(() -> new ResourceNotFoundException("Warehouse", "id",
-    // sale_id));
+    // saleId));
     // String username = this.tokenAuthenticationService.getUsername(request);
 
-    // this.saleEmployeeRepository.deleteBySaleId(sale_id);
+    // this.saleEmployeeRepository.deleteBySaleId(saleId);
     // }
 
 }

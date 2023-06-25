@@ -19,53 +19,53 @@ import lombok.Data;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cus_id")
-    private int cus_id;
+    @Column(name = "cusId")
+    private int cusId;
 
     @Column(name = "cus_member")
-    private String cus_member;
+    private String cusMember;
 
     @Column(name = "cus_prefix")
-    private String cus_prefix;
+    private String cusPrefix;
 
     @Column(name = "cus_full_name")
-    private String cus_full_name;
+    private String cusFullName;
 
     @Column(name = "cus_nick_name")
-    private String cus_nick_name;
+    private String cusNickName;
 
     @Column(name = "cus_telephone")
-    private String cus_telephone;
+    private String cusTelephone;
 
     @Column(name = "cus_birthday")
-    private Date cus_birthday;
+    private Date cusBirthday;
 
     @Column(name = "cus_gender")
-    private String cus_gender;
+    private String cusGender;
 
     @Column(name = "cus_occupation")
-    private String cus_occupation;
+    private String cusOccupation;
 
     @Column(name = "cus_status")
-    private String cus_status;
+    private String cusStatus;
 
     @Column(name = "cus_salary")
-    private String cus_salary;
+    private String cusSalary;
 
     @Column(name = "cus_payment")
-    private String cus_payment;
+    private String cusPayment;
 
     @Column(name = "cus_house_number")
-    private String cus_house_number;
+    private String cusHouseNumber;
 
     @Column(name = "cus_moo")
-    private String cus_moo;
+    private String cusMoo;
 
     @Column(name = "cus_soi")
-    private String cus_soi;
+    private String cusSoi;
 
     @Column(name = "cus_road")
-    private String cus_road;
+    private String cusRoad;
 
     @Column(name = "provinceID")
     private int provinceID;
@@ -84,18 +84,18 @@ public class Customer {
 
     @Column(name = "drug_allergy")
     private String drug_allergy;
-
+    
     @Column(name = "record_status")
     private String recordStatus;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "created_time")
     private Date createdTime;
 
     @Column(name = "created_by")
     private String createdBy;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "updated_time")
     private Date updatedTime;
 
