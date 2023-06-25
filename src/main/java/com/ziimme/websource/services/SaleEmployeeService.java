@@ -51,6 +51,17 @@ public class SaleEmployeeService {
         return warehouseFarmCategories;
     }
 
+    public List<SaleEmployee> getByWarehouseIdCus(int cusId) {
+        this.saleRepository.findById(cusId)
+                .orElseThrow(() -> new ResourceNotFoundException("cusId", "id",
+                        cusId));
+
+        List<SaleEmployee> warehouseFarmCategories = this.saleEmployeeRepository
+                .findByIdCus(cusId);
+
+        return warehouseFarmCategories;
+    }
+
     // public List<SaleEmployee> getByemp(int emp_id) {
     // List<SaleEmployee> warehouseFarmCategories = this.saleEmployeeRepository
     // .findById(emp_id);

@@ -19,7 +19,8 @@ public interface SaleEmployeeRepository extends JpaRepository<SaleEmployee, Inte
   // @Transactional
   // void deleteBySaleId(int saleId);
 
-  // @Query(value = "SELECT u FROM SaleEmployee u WHERE recordStatus = 'A' ORDER BY saleId")
+  // @Query(value = "SELECT u FROM SaleEmployee u WHERE recordStatus = 'A' ORDER
+  // BY saleId")
   // List<SaleEmployee> findById();
 
   @Query(value = "SELECT d FROM SaleEmployee d WHERE  saleId = :id ")
@@ -27,6 +28,9 @@ public interface SaleEmployeeRepository extends JpaRepository<SaleEmployee, Inte
 
   @Query(value = "SELECT d FROM SaleEmployee d WHERE  empId = :id ")
   List<SaleEmployee> findByIdEmp(@Param("id") int empId);
+
+  @Query(value = "SELECT d FROM SaleEmployee d WHERE  cusId = :id ")
+  List<SaleEmployee> findByIdCus(@Param("id") int cusId);
 
   @Query(value = "SELECT d FROM SaleEmployee d WHERE  consultantId = :id ")
   List<SaleEmployee> findByIdConsultant(@Param("id") int consultantId);
