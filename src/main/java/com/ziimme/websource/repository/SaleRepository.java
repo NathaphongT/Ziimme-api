@@ -14,11 +14,9 @@ import com.ziimme.websource.models.Sale;
 
 public interface SaleRepository extends JpaRepository<Sale, Integer>, JpaSpecificationExecutor<Sale> {
 
-   @Query(value = "SELECT w FROM Sale w WHERE recordStatus = 'A' ORDER BY saleId")
+    @Query(value = "SELECT w FROM Sale w WHERE recordStatus = 'A' ORDER BY saleId")
     List<Sale> findAll();
     Page<Sale> findAll(Specification<Sale> specification, Pageable pageable);
-
-
 
     @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND saleId = :id ORDER BY createdTime desc")
     List<Sale> findByIdSale(@Param("id") int saleId);

@@ -66,11 +66,6 @@ public class SaleController {
         }
     }
 
-    @RequestMapping(value = "sales/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Sale> getSaleById(@PathVariable("id") int saleId) {
-        return new ResponseEntity<>(this.service.getById(saleId), HttpStatus.OK);
-    }
-    
     @RequestMapping(value = "sales", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<Sale> createSales(@RequestBody Sale sales, HttpServletRequest request) {
         try {
@@ -96,6 +91,11 @@ public class SaleController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(value = "sales/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Sale> getSaleById(@PathVariable("id") int saleId) {
+        return new ResponseEntity<>(this.service.getById(saleId), HttpStatus.OK);
     }
 
     @RequestMapping(value = "sale_cus/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")

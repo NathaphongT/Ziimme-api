@@ -13,15 +13,19 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
+import com.ziimme.websource.models.Branch;
 import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleSpecification;
 import com.ziimme.websource.models.Users;
+import com.ziimme.websource.models.UsersSpecification;
 import com.ziimme.websource.repository.SaleRepository;
+import com.ziimme.websource.repository.UsersRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
 
 @Service
 public class SaleService {
+
     private SaleRepository saleRepository;
     private SaleSpecification saleSpecification;
     private TokenAuthenticationService tokenAuthenticationService;
@@ -36,12 +40,13 @@ public class SaleService {
         this.tokenAuthenticationService = tokenAuthenticationService;
     }
 
+
     public List<Sale> getAll() {
         return this.saleRepository.findAll();
     }
 
     public Page<Sale> search(String q, Pageable pageable) {
-        return this.saleRepository.findAll(saleSpecification.searchByName(q), pageable);
+        return this.saleRepository.findAll(saleSpecification.search(q), pageable);
     }
 
     public Sale getById(int saleId) {

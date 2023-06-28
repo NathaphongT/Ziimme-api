@@ -35,7 +35,7 @@ public class Sale {
     @Column(name = "sale_overdue")
     private int saleOverdue;
 
-    @Column(name = "cusId")
+    @Column(name = "cus_id")
     private int cusId;
 
     @Column(name = "record_status")
