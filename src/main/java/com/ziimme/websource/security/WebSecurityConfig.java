@@ -12,7 +12,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers("/api/v1.0/**").permitAll()
+                .antMatchers("/backend/api/v1.0/**").permitAll()
                 // .antMatchers("/api/v1.0/authentication").permitAll()
                 // .antMatchers("/api/v1.0/facebook/search").permitAll()
                 // .antMatchers("/api/v1.0/logs").permitAll()
