@@ -28,7 +28,7 @@ import com.ziimme.websource.services.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1.0")
+@RequestMapping("/backend/api/v1.0")
 public class EmployeeController {
 
     @Autowired
