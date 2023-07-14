@@ -28,6 +28,9 @@ public interface SaleEmployeeRepository extends JpaRepository<SaleEmployee, Inte
   @Query(value = "SELECT d FROM SaleEmployee d WHERE  empId = :id ")
   List<SaleEmployee> findByIdEmp(@Param("id") int empId);
 
+  @Query(value = "SELECT d FROM SaleEmployee d WHERE  cusId = :id ")
+  List<SaleEmployee> findByIdCus(@Param("id") int cusId);
+
   @Query(value = "SELECT d FROM SaleEmployee d WHERE  consultantId = :id ")
   List<SaleEmployee> findByIdConsultant(@Param("id") int consultantId);
 
