@@ -16,9 +16,9 @@ public class SaleAll {
      @Id
      private Long saleId;
      private String empFullname;
+     private String courseCode;
      private int cusId;
      private int saleNumber;
-     private int saleProduct;
      private int saleCount;
      private int salePayBalance;
      private int salePay;

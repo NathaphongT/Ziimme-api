@@ -59,7 +59,6 @@ public class SaleService {
 
         Sale _sales = new Sale();
         _sales.setSaleNumber(sale.getSaleNumber());
-        _sales.setSaleProduct(sale.getSaleProduct());
         _sales.setSaleCount(sale.getSaleCount());
         _sales.setSalePayBalance(sale.getSalePayBalance());
         _sales.setSalePay(sale.getSalePay());
@@ -78,7 +77,6 @@ public class SaleService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         _sales.setSaleNumber(sale.getSaleNumber());
-        _sales.setSaleProduct(sale.getSaleProduct());
         _sales.setSaleCount(sale.getSaleCount());
         _sales.setSalePayBalance(sale.getSalePayBalance());
         _sales.setSalePay(sale.getSalePay());
