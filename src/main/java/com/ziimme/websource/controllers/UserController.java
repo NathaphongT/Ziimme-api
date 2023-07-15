@@ -27,7 +27,7 @@ import com.ziimme.websource.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1.0")
+@RequestMapping("/backend/api/v1.0")
 public class UserController {
     @Autowired
     private UserService service;

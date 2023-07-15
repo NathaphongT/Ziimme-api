@@ -17,7 +17,7 @@ import com.ziimme.websource.services.SaleAllService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1.0")
+@RequestMapping("/backend/api/v1.0")
 public class SaleAllController {
      @Autowired
      private SaleAllService service;
