@@ -62,13 +62,7 @@ public class SaleEmployeeService {
         return warehouseFarmCategories;
     }
 
-    // public List<SaleEmployee> getByemp(int emp_id) {
-    // List<SaleEmployee> warehouseFarmCategories = this.saleEmployeeRepository
-    // .findById(emp_id);
-
-    // return warehouseFarmCategories;
-    // }
-
+ 
     public List<SaleEmployee> create(int saleId, List<SaleEmployee> SaleEmployee, HttpServletRequest request) {
         this.saleRepository.findById(saleId)
                 .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", saleId));

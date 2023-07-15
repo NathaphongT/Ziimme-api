@@ -28,7 +28,7 @@ public class SaleAllController {
           return this.service.findAll();
      }
 
-     @RequestMapping(value = "sales_all/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+     @RequestMapping(value = "sales_all_cus/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
      public ResponseEntity<Object> getByIdsale(@PathVariable("id") int cusId) {
           return service.findByIdSaleAll(cusId);
      }
