@@ -26,21 +26,9 @@ public class SaleEmployeeController {
     SaleEmployeeService service;
 
     @RequestMapping(value = "sales/{saleId:.*}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getByIdSale(
+    public ResponseEntity<List<SaleEmployee>> getAllWarehouseFarmCategory(
             @PathVariable(value = "saleId") int saleId) {
-        return new ResponseEntity<>(this.service.getByWarehouseId(saleId), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "salese/{empId}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getByIdempId(
-            @PathVariable(value = "empId") int empId) {
-        return new ResponseEntity<>(this.service.getByWarehouseIdEmp(empId), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "salescus/{cusId}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getByIdcusId(
-            @PathVariable(value = "cusId") int cusId) {
-        return new ResponseEntity<>(this.service.getByWarehouseIdCus(cusId), HttpStatus.OK);
+        return new ResponseEntity<>(this.service.getBysaleId(saleId), HttpStatus.OK);
     }
 
     @RequestMapping(value = "sales/{saleId}/sale_employee", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
@@ -51,6 +39,29 @@ public class SaleEmployeeController {
         try {
             return new ResponseEntity<>(this.service.create(saleId, saleConsultant, request),
                     HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "sale_employee/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategory(@PathVariable("id") int warehouseFarmCategoryId,
+            HttpServletRequest request) {
+        try {
+            this.service.delete(warehouseFarmCategoryId, request);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "sales/{saleId}/sale_employee", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategoryBysaleId(
+            @PathVariable("saleId") int saleId,
+            HttpServletRequest request) {
+        try {
+            this.service.deleteBysaleId(saleId, request);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

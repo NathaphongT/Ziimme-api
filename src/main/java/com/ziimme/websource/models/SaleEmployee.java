@@ -6,8 +6,6 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Data;
-
 @Entity
 @Table(name = "zim_txt_data_consultant")
 public class SaleEmployee {
