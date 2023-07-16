@@ -31,12 +31,6 @@ public class SaleEmployeeController {
         return new ResponseEntity<>(this.service.getBysaleId(saleId), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "salescus/{cusId}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getByIdcudId(
-            @PathVariable(value = "cusId") int cusId) {
-        return new ResponseEntity<>(this.service.getByWarehouseIdCus(cusId), HttpStatus.OK);
-    }
-
     @RequestMapping(value = "sales/{saleId}/sale_employee", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<List<SaleEmployee>> createWarehouseFarmCategory(
             @PathVariable(value = "saleId") int saleId,
