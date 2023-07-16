@@ -18,7 +18,6 @@ public interface SaleRepository extends JpaRepository<Sale, Integer>, JpaSpecifi
     List<Sale> findAll();
     Page<Sale> findAll(Specification<Sale> specification, Pageable pageable);
 
-
     @Query(value = "SELECT d FROM Sale d WHERE record_status = 'A' AND saleId = :id ORDER BY createdTime desc")
     List<Sale> findByIdSale(@Param("id") int saleId);
 
