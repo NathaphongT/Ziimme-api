@@ -15,53 +15,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.models.SaleEmployee;
+import com.ziimme.websource.models.SaleProduct;
 import com.ziimme.websource.services.SaleEmployeeService;
+import com.ziimme.websource.services.SaleProductService;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/backend/api/v1.0")
-public class SaleEmployeeController {
+public class SaleProductController {
 
     @Autowired
-    SaleEmployeeService service;
+    SaleProductService service;
 
-    @RequestMapping(value = "sales/{saleId:.*}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getAllWarehouseFarmCategory(
+    @RequestMapping(value = "products/{saleId:.*}/sale_product", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+    public ResponseEntity<List<SaleProduct>> getAllWarehouseFarmCategory(
             @PathVariable(value = "saleId") int saleId) {
         return new ResponseEntity<>(this.service.getBysaleId(saleId), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "salescus/{cusId}/sale_employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> getByIdcudId(
-            @PathVariable(value = "cusId") int cusId) {
-        return new ResponseEntity<>(this.service.getByWarehouseIdCus(cusId), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "sales/{saleId}/sale_employee", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    public ResponseEntity<List<SaleEmployee>> createWarehouseFarmCategory(
+    @RequestMapping(value = "products/{saleId}/sale_product", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public ResponseEntity<List<SaleProduct>> createWarehouseFarmCategory(
             @PathVariable(value = "saleId") int saleId,
-            @RequestBody List<SaleEmployee> saleConsultant,
+            @RequestBody List<SaleProduct> saleProducts,
             HttpServletRequest request) {
         try {
-            return new ResponseEntity<>(this.service.create(saleId, saleConsultant, request),
+            return new ResponseEntity<>(this.service.create(saleId, saleProducts, request),
                     HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @RequestMapping(value = "sale_employee/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
-    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategory(@PathVariable("id") int consultantId,
+    @RequestMapping(value = "sale_product/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategory(@PathVariable("id") int saleProductId,
             HttpServletRequest request) {
         try {
-            this.service.delete(consultantId, request);
+            this.service.delete(saleProductId, request);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @RequestMapping(value = "sales/{saleId}/sale_employee", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+    @RequestMapping(value = "products/{saleId}/sale_product", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
     public ResponseEntity<HttpStatus> deleteWarehouseFarmCategoryBysaleId(
             @PathVariable("saleId") int saleId,
             HttpServletRequest request) {

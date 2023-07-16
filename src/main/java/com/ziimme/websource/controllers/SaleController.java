@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.json.res.PageResponse;
+import com.ziimme.websource.json.res.ResponseJson;
 import com.ziimme.websource.models.Sale;
-import com.ziimme.websource.models.Users;
+import com.ziimme.websource.models.SaleAll;
+import com.ziimme.websource.services.SaleAllService;
 import com.ziimme.websource.services.SaleService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1.0")
+@RequestMapping("/backend/api/v1.0")
 public class SaleController {
 
     @Autowired
@@ -36,13 +39,14 @@ public class SaleController {
     @RequestMapping(value = "sales", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<PageResponse> searchWarehouse(
             @RequestParam(required = false) String q,
+            @RequestParam(required = false) String useStatus,
             @RequestParam(defaultValue = "1", required = false) int page,
             @RequestParam(defaultValue = "10", required = false) int limit,
             @RequestParam(defaultValue = "0", required = false) int saleId,
             @RequestParam(defaultValue = "createdTime", required = false) String sort,
             @RequestParam(defaultValue = "asc", required = false) String order) {
         try {
-            List<Sale> sales = new ArrayList<Sale>();
+            List<Sale> warehouses = new ArrayList<Sale>();
 
             Sort.Direction direction = Sort.Direction.ASC;
             if (order.equalsIgnoreCase("desc")) {
@@ -51,11 +55,11 @@ public class SaleController {
 
             Pageable paging = PageRequest.of(page - 1, limit, direction, sort);
 
-            Page<Sale> salePage = this.service.search(q, paging);
-            sales = salePage.getContent();
+            Page<Sale> salePage = this.service.search(q, saleId, paging);
+            warehouses = salePage.getContent();
 
             PageResponse response = new PageResponse();
-            response.setData(sales);
+            response.setData(warehouses);
             response.setCurrentPage(salePage.getNumber() + 1);
             response.setTotalItems(salePage.getTotalElements());
             response.setTotalPages(salePage.getTotalPages());
@@ -70,7 +74,7 @@ public class SaleController {
     public ResponseEntity<Sale> getSaleById(@PathVariable("id") int saleId) {
         return new ResponseEntity<>(this.service.getById(saleId), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "sales", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public ResponseEntity<Sale> createSales(@RequestBody Sale sales, HttpServletRequest request) {
         try {

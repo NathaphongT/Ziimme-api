@@ -6,20 +6,19 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-
 @Entity
-@Table(name = "zim_txt_data_consultant")
-public class SaleEmployee {
+@Table(name = "zim_txt_data_products")
+public class SaleProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "consultant_id")
-    private int consultantId;
+    @Column(name = "sale_product_id")
+    private int saleProductId;
 
     @Column(name = "sale_id")
     private int saleId;
 
-    @Column(name = "emp_id")
-    private int empId;
+    @Column(name = "course_id")
+    private int courseId;
 
     @Column(name = "cusId")
     private int cusId;
@@ -41,12 +40,12 @@ public class SaleEmployee {
     @Column(name = "updated_by")
     private String updatedBy;
 
-    public SaleEmployee() {
+    public SaleProduct() {
 
     }
 
-    public SaleEmployee(int empId, int saleId, int cusId) {
-        this.empId = empId;
+    public SaleProduct(int courseId, int saleId, int cusId) {
+        this.courseId = courseId;
         this.saleId = saleId;
         this.cusId = cusId;
     }
@@ -54,16 +53,16 @@ public class SaleEmployee {
     @Override
     public String toString() {
         return String.format(
-                "SaleEmployee[consultantId=%d, empId=%d, saleId=%d, cusId=%d]",
-                consultantId, empId, saleId, cusId);
+                "SaleProduct[saleProductId=%d, courseId=%d, saleId=%d, cusId=%d]",
+                saleProductId, courseId, saleId, cusId);
     }
 
-    public int getconsultantId() {
-        return consultantId;
+    public int getsaleProductId() {
+        return saleProductId;
     }
 
-    public void setconsultantId(int consultantId) {
-        this.consultantId = consultantId;
+    public void setsaleProductId(int saleProductId) {
+        this.saleProductId = saleProductId;
     }
 
     public int getsaleId() {
@@ -74,12 +73,12 @@ public class SaleEmployee {
         this.saleId = saleId;
     }
 
-    public int getempId() {
-        return empId;
+    public int getcourseId() {
+        return courseId;
     }
 
-    public void setempId(int empId) {
-        this.empId = empId;
+    public void setcourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public int getcusId() {

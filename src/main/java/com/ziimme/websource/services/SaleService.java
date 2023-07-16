@@ -16,6 +16,7 @@ import com.ziimme.websource.json.res.ResponseJson;
 import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleSpecification;
 import com.ziimme.websource.models.Users;
+import com.ziimme.websource.repository.SaleAllRepository;
 import com.ziimme.websource.repository.SaleRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
@@ -23,11 +24,12 @@ import com.ziimme.websource.utils.GlobalUtil;
 @Service
 public class SaleService {
     private SaleRepository saleRepository;
+  
     private SaleSpecification saleSpecification;
     private TokenAuthenticationService tokenAuthenticationService;
 
     @Autowired
-    public void setWarehouseService(
+    public void setSaleService(
             SaleRepository saleRepository,
             SaleSpecification saleSpecification,
             TokenAuthenticationService tokenAuthenticationService) {
@@ -40,8 +42,8 @@ public class SaleService {
         return this.saleRepository.findAll();
     }
 
-    public Page<Sale> search(String q, Pageable pageable) {
-        return this.saleRepository.findAll(saleSpecification.searchByName(q), pageable);
+    public Page<Sale> search(String q, int type, Pageable pageable) {
+        return this.saleRepository.findAll(saleSpecification.search(q, type), pageable);
     }
 
     public Sale getById(int saleId) {
@@ -57,7 +59,6 @@ public class SaleService {
 
         Sale _sales = new Sale();
         _sales.setSaleNumber(sale.getSaleNumber());
-        _sales.setSaleProduct(sale.getSaleProduct());
         _sales.setSaleCount(sale.getSaleCount());
         _sales.setSalePayBalance(sale.getSalePayBalance());
         _sales.setSalePay(sale.getSalePay());
@@ -115,6 +116,10 @@ public class SaleService {
         List<Sale> UserList = this.saleRepository.findByIdCus(cusId);
         responseJson.setData(UserList);
         return new ResponseEntity<>(UserList, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Object> saleAllService(HttpServletRequest request) {
+        return null;
     }
 
 }

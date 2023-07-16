@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.json.res.PageResponse;
+import com.ziimme.websource.models.Course;
 import com.ziimme.websource.models.Employee;
 import com.ziimme.websource.models.Position;
 import com.ziimme.websource.security.TokenAuthenticationService;
@@ -28,7 +29,7 @@ import com.ziimme.websource.services.EmployeeService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1.0")
+@RequestMapping("/backend/api/v1.0")
 public class EmployeeController {
 
     @Autowired
@@ -38,14 +39,14 @@ public class EmployeeController {
     private TokenAuthenticationService jwt;
 
     @RequestMapping(value = "employee", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<PageResponse> searchPositions(
+    public ResponseEntity<PageResponse> searchCourses(
             @RequestParam(required = false) String q,
             @RequestParam(defaultValue = "1", required = false) int page,
             @RequestParam(defaultValue = "10", required = false) int limit,
             @RequestParam(defaultValue = "createdTime", required = false) String sort,
             @RequestParam(defaultValue = "asc", required = false) String order) {
         try {
-            List<Employee> employees = new ArrayList<Employee>();
+            List<Employee> courses = new ArrayList<Employee>();
 
             Sort.Direction direction = Sort.Direction.ASC;
             if (order.equalsIgnoreCase("desc")) {
@@ -54,14 +55,14 @@ public class EmployeeController {
 
             Pageable paging = PageRequest.of(page - 1, limit, direction, sort);
 
-            Page<Employee> positionPage = this.service.search(q, paging);
-            employees = positionPage.getContent();
+            Page<Employee> coursePage = this.service.search(q, paging);
+            courses = coursePage.getContent();
 
             PageResponse response = new PageResponse();
-            response.setData(employees);
-            response.setCurrentPage(positionPage.getNumber() + 1);
-            response.setTotalItems(positionPage.getTotalElements());
-            response.setTotalPages(positionPage.getTotalPages());
+            response.setData(courses);
+            response.setCurrentPage(coursePage.getNumber() + 1);
+            response.setTotalItems(coursePage.getTotalElements());
+            response.setTotalPages(coursePage.getTotalPages());
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception ex) {
