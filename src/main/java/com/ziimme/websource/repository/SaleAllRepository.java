@@ -13,6 +13,7 @@ public interface SaleAllRepository extends JpaRepository<SaleAll, Integer> {
      @Query(value = "SELECT w FROM SaleAll w")
      List<SaleAll> findAll();
 
-     @Query(value = "SELECT w FROM SaleAll w WHERE cusId = :id ")
-     List<SaleAll> findByIdSaleAll(@Param("id") int cusId);
+  
+     @Query(value = "SELECT d FROM SaleAll d WHERE cusId = :id ")
+     List<SaleAll> findById(@Param("id") int cusId);
 }

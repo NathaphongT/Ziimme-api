@@ -11,15 +11,18 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "views_zim_sale_list")
-@Immutable
+
 public class SaleAll {
      @Id
-     private Long saleId;
-     private String empFullname;
-     private String courseCode;
+     private int saleProductId;
+     private int saleId;
      private int cusId;
-     private int saleNumber;
      private int saleCount;
+     private String courseId;
+     private String courseNameTh;
+     private String courseCode;
+     private String empFullname;
+     private int saleNumber;
      private int salePayBalance;
      private int salePay;
      private int saleOverdue;

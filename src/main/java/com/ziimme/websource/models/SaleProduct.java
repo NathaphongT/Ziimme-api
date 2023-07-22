@@ -20,6 +20,9 @@ public class SaleProduct {
     @Column(name = "course_id")
     private int courseId;
 
+    @Column(name = "sale_count")
+    private int saleCount;
+
     @Column(name = "cusId")
     private int cusId;
 
@@ -44,17 +47,18 @@ public class SaleProduct {
 
     }
 
-    public SaleProduct(int courseId, int saleId, int cusId) {
+    public SaleProduct(int courseId, int saleId, int saleCount, int cusId) {
         this.courseId = courseId;
         this.saleId = saleId;
         this.cusId = cusId;
+        this.saleCount = saleCount;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "SaleProduct[saleProductId=%d, courseId=%d, saleId=%d, cusId=%d]",
-                saleProductId, courseId, saleId, cusId);
+                "SaleProduct[saleProductId=%d, courseId=%d, saleId=%d, cusId=%d, saleCount=%d]",
+                saleProductId, courseId, saleId, cusId, saleCount);
     }
 
     public int getsaleProductId() {
@@ -71,6 +75,14 @@ public class SaleProduct {
 
     public void setsaleId(int saleId) {
         this.saleId = saleId;
+    }
+
+    public int getsaleCount() {
+        return saleCount;
+    }
+
+    public void setsaleCount(int saleCount) {
+        this.saleCount = saleCount;
     }
 
     public int getcourseId() {

@@ -1,5 +1,6 @@
 package com.ziimme.websource.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
-import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleAll;
-import com.ziimme.websource.models.SaleCut;
 import com.ziimme.websource.repository.SaleAllRepository;
 
 @Service
@@ -29,11 +28,21 @@ public class SaleAllService {
         return this.saleAllRepository.findAll();
     }
 
-    public ResponseEntity<Object> findByIdSaleAll(int cusId) {
+    public ResponseEntity<List<SaleAll>> findByIdIn(int cusId) {
         ResponseJson responseJson = new ResponseJson();
-        List<SaleAll> UserList = this.saleAllRepository.findByIdSaleAll(cusId);
-        responseJson.setData(UserList);
-        return new ResponseEntity<>(UserList, HttpStatus.OK);
-    }
+        List<SaleAll> saleList = this.saleAllRepository.findById(cusId);
 
+        // Process each SaleAll item using a for-each loop
+        for (SaleAll sale : saleList) {
+            // Perform some operation on each sale (e.g., update a field, calculate
+            // something)
+            // For example, set a flag to indicate that the sale is processed
+            // sale.setProcessed(true);
+            System.out.println(sale);
+        }
+
+        responseJson.setData(saleList);
+
+        return new ResponseEntity<>(saleList, HttpStatus.OK);
+    }
 }

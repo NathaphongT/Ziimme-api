@@ -47,6 +47,7 @@ public class SaleProductService {
         for (SaleProduct saleProducts : saleProduct) {
             SaleProduct saleProducte = new SaleProduct();
             saleProducte.setcourseId(saleProducts.getcourseId());
+            saleProducte.setsaleCount(saleProducts.getsaleCount());
             saleProducte.setcusId(saleProducts.getcusId());
             saleProducte.setRecordStatus(GlobalUtil.getActiveStatus());
             saleProducte.setCreatedBy(username);
@@ -70,6 +71,7 @@ public class SaleProductService {
         for (SaleProduct saleProducts : saleProduct) {
             SaleProduct saleProducte = new SaleProduct();
             saleProducte.setcourseId(saleProducts.getcourseId());
+            saleProducte.setsaleCount(saleProducts.getsaleCount());
             saleProducte.setcusId(saleProducts.getcusId());
             saleProducte.setRecordStatus(GlobalUtil.getActiveStatus());
             saleProducte.setUpdatedBy(username);
