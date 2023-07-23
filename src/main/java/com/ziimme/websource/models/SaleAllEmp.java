@@ -16,7 +16,7 @@ public class SaleAllEmp {
      private Long saleNumber;
      private String cusFullName;
      private String courseId;
+     private int saleProductId;
      private int salePayBalance;
      private int empId;
-     // private String empFullname;
 }
