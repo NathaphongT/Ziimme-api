@@ -30,8 +30,14 @@ public class SaleAllController {
      }
 
      @RequestMapping(value = "sales_all/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-     public ResponseEntity<List<SaleAll>> getByIdsale(@PathVariable("id") int cusId) {
+     public ResponseEntity<List<SaleAll>> getByIdcus(@PathVariable("id") int cusId) {
           // Call the service method and return its response directly
           return service.findByIdIn(cusId);
+     }
+
+     @RequestMapping(value = "sales_all_sale/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+     public ResponseEntity<List<SaleAll>> getByIdsale(@PathVariable("id") int SaleId) {
+          // Call the service method and return its response directly
+          return service.findByIdSale(SaleId);
      }
 }
