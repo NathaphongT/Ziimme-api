@@ -45,10 +45,10 @@ public class SaleEmployeeController {
     }
 
     @RequestMapping(value = "sale_employee/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
-    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategory(@PathVariable("id") int consultantId,
+    public ResponseEntity<HttpStatus> deleteWarehouseFarmCategory(@PathVariable("id") int saleId,
             HttpServletRequest request) {
         try {
-            this.service.delete(consultantId, request);
+            this.service.delete(saleId, request);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

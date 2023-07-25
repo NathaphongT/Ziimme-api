@@ -85,11 +85,11 @@ public class SaleProductService {
         return _saleProducts;
     }
 
-    public void delete(int consultantId, HttpServletRequest request) {
+    public void delete(int saleId, HttpServletRequest request) {
         SaleProduct _SaleProduct = this.saleProductRepository
-                .findById(consultantId)
+                .findById(saleId)
                 .orElseThrow(
-                        () -> new ResourceNotFoundException("Warehouse FarmCategory", "id", consultantId));
+                        () -> new ResourceNotFoundException("SaleProduct", "id", saleId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
