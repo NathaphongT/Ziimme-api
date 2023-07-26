@@ -15,37 +15,37 @@ public class SaleCut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sale_cut_id")
-    private int sale_cut_id;
+    private int saleCutId;
 
     @Column(name = "sale_cut_count")
-    private int sale_cut_count;
+    private int saleCutCount;
+
+    @Column(name = "sale_cut_course")
+    private String saleCutCourse;
 
     @Column(name = "sale_cut_vitamin")
-    private String sale_cut_vitamin;
+    private String saleCutVitamin;
 
     @Column(name = "sale_cut_mark")
-    private String sale_cut_mark;
+    private String saleCutMark;
 
     @Column(name = "sale_cut_therapist")
-    private int sale_cut_therapist;
+    private int saleCutTherapist;
 
     @Column(name = "sale_cut_doctor")
-    private String sale_cut_doctor;
+    private String saleCutDoctor;
 
     @Column(name = "sale_cut_detail")
-    private String sale_cut_detail;
+    private String saleCutDetail;
 
-    @Column(name = "sale_cut_pay_balance")
-    private int sale_cut_pay_balance;
-
-    @Column(name = "sale_cut_pay")
-    private int sale_cut_pay;
-
-    @Column(name = "sale_cut_overdue")
-    private int sale_cut_overdue;
+    @Column(name = "sale_product_id")
+    private int saleProductId;
 
     @Column(name = "sale_id")
-    private int sale_id;
+    private int saleId;
+
+    @Column(name = "course_id")
+    private int courseId;
 
     @Column(name = "record_status")
     private String recordStatus;

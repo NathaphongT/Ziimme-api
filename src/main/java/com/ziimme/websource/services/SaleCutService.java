@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
+import com.ziimme.websource.models.Province;
+import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleCut;
 import com.ziimme.websource.repository.SaleCutRepository;
 import com.ziimme.websource.security.TokenAuthenticationService;
@@ -28,62 +30,55 @@ public class SaleCutService {
         return this.saleCutRepository.findAll();
     }
 
-    public ResponseEntity<Object> findByIdSaleCut(int sale_id) {
+    public ResponseEntity<Object> getById(int saleProductId) {
         ResponseJson responseJson = new ResponseJson();
-        List<SaleCut> UserList = this.saleCutRepository.findByIdSaleCut(sale_id);
+        List<SaleCut> UserList = this.saleCutRepository.findByIdCut(saleProductId);
         responseJson.setData(UserList);
-        return new ResponseEntity<>(UserList, HttpStatus.OK);
-    }
-    
-    public ResponseEntity<Object> findIdSaleCutOrder(int sale_id) {
-        ResponseJson responseJson = new ResponseJson();
-        List<SaleCut> UserList = this.saleCutRepository.findIdSaleCutOrder(sale_id);
-        responseJson.setData(UserList);
-        return new ResponseEntity<>(UserList, HttpStatus.OK);
+        return new ResponseEntity<>(responseJson, HttpStatus.OK);
     }
 
     public SaleCut create(SaleCut saleCuts, HttpServletRequest request) {
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        SaleCut _SaleCuts = new SaleCut();
-        _SaleCuts.setSale_cut_count(saleCuts.getSale_cut_count());
-        _SaleCuts.setSale_cut_vitamin(saleCuts.getSale_cut_vitamin());
-        _SaleCuts.setSale_cut_mark(saleCuts.getSale_cut_mark());
-        _SaleCuts.setSale_cut_therapist(saleCuts.getSale_cut_therapist());
-        _SaleCuts.setSale_cut_doctor(saleCuts.getSale_cut_doctor());
-        _SaleCuts.setSale_cut_detail(saleCuts.getSale_cut_detail());
-        _SaleCuts.setSale_cut_pay_balance(saleCuts.getSale_cut_pay_balance());
-        _SaleCuts.setSale_cut_pay(saleCuts.getSale_cut_pay());
-        _SaleCuts.setSale_cut_overdue(saleCuts.getSale_cut_overdue());
-        _SaleCuts.setSale_id(saleCuts.getSale_id());
-        _SaleCuts.setRecordStatus(GlobalUtil.getActiveStatus());
-        _SaleCuts.setCreatedBy(username);
-        _SaleCuts.setCreatedTime(GlobalUtil.getCurrentDateTime());
-        return this.saleCutRepository.save(_SaleCuts);
+        SaleCut _saleCuts = new SaleCut();
+        _saleCuts.setSaleCutCount(saleCuts.getSaleCutCount());
+        _saleCuts.setSaleCutCourse(saleCuts.getSaleCutCourse());
+        _saleCuts.setSaleCutVitamin(saleCuts.getSaleCutVitamin());
+        _saleCuts.setSaleCutMark(saleCuts.getSaleCutMark());
+        _saleCuts.setSaleCutTherapist(saleCuts.getSaleCutTherapist());
+        _saleCuts.setSaleCutDoctor(saleCuts.getSaleCutDoctor());
+        _saleCuts.setSaleCutDetail(saleCuts.getSaleCutDetail());
+        _saleCuts.setSaleId(saleCuts.getSaleId());
+        _saleCuts.setCourseId(saleCuts.getCourseId());
+        _saleCuts.setSaleProductId(saleCuts.getSaleProductId());
+        _saleCuts.setRecordStatus(GlobalUtil.getActiveStatus());
+        _saleCuts.setCreatedBy(username);
+        _saleCuts.setCreatedTime(GlobalUtil.getCurrentDateTime());
+        return this.saleCutRepository.save(_saleCuts);
     }
 
-    public SaleCut update(int sale_cut_id, SaleCut saleCut, HttpServletRequest request) {
-        SaleCut _salesCut = this.saleCutRepository.findById(sale_cut_id)
-                .orElseThrow(() -> new ResourceNotFoundException("Sale", "id", sale_cut_id));
+    public SaleCut update(int saleCutId, SaleCut saleCuts, HttpServletRequest request) {
+        SaleCut _saleCuts = this.saleCutRepository.findById(saleCutId)
+                .orElseThrow(() -> new ResourceNotFoundException("Sale", "id", saleCutId));
 
         String username = this.tokenAuthenticationService.getUsername(request);
 
-        _salesCut.setSale_cut_count(saleCut.getSale_cut_count());
-        _salesCut.setSale_cut_vitamin(saleCut.getSale_cut_vitamin());
-        _salesCut.setSale_cut_mark(saleCut.getSale_cut_mark());
-        _salesCut.setSale_cut_therapist(saleCut.getSale_cut_therapist());
-        _salesCut.setSale_cut_doctor(saleCut.getSale_cut_doctor());
-        _salesCut.setSale_cut_detail(saleCut.getSale_cut_detail());
-        _salesCut.setSale_cut_pay_balance(saleCut.getSale_cut_pay_balance());
-        _salesCut.setSale_cut_pay(saleCut.getSale_cut_pay());
-        _salesCut.setSale_cut_overdue(saleCut.getSale_cut_overdue());
-        _salesCut.setSale_id(saleCut.getSale_id());
-        _salesCut.setRecordStatus(GlobalUtil.getActiveStatus());
-        _salesCut.setUpdatedBy(username);
-        _salesCut.setUpdatedTime(GlobalUtil.getCurrentDateTime());
+        _saleCuts.setSaleCutCount(saleCuts.getSaleCutCount());
+        _saleCuts.setSaleCutCourse(saleCuts.getSaleCutCourse());
+        _saleCuts.setSaleCutVitamin(saleCuts.getSaleCutVitamin());
+        _saleCuts.setSaleCutMark(saleCuts.getSaleCutMark());
+        _saleCuts.setSaleCutTherapist(saleCuts.getSaleCutTherapist());
+        _saleCuts.setSaleCutDoctor(saleCuts.getSaleCutDoctor());
+        _saleCuts.setSaleCutDetail(saleCuts.getSaleCutDetail());
+        _saleCuts.setSaleId(saleCuts.getSaleId());
+        _saleCuts.setCourseId(saleCuts.getCourseId());
+        _saleCuts.setSaleProductId(saleCuts.getSaleProductId());
+        _saleCuts.setRecordStatus(GlobalUtil.getActiveStatus());
+        _saleCuts.setUpdatedBy(username);
+        _saleCuts.setUpdatedTime(GlobalUtil.getCurrentDateTime());
 
-        _salesCut = this.saleCutRepository.save(_salesCut);
+        _saleCuts = this.saleCutRepository.save(_saleCuts);
 
-        return _salesCut;
+        return _saleCuts;
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleCut;
 import com.ziimme.websource.services.SaleCutService;
 
@@ -30,13 +31,8 @@ public class SaleCutController {
     }
 
     @RequestMapping(value = "sale_cut/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> getByIdsale(@PathVariable("id") int sale_id) {
-        return service.findByIdSaleCut(sale_id);
-    }
-
-    @RequestMapping(value = "sale_cut_order/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-    public ResponseEntity<Object> findIdSaleCutOrder1(@PathVariable("id") int sale_id) {
-        return service.findIdSaleCutOrder(sale_id);
+    public ResponseEntity<Object> findByIdSaleCut(@PathVariable("id") int saleProductId) {
+        return service.getById(saleProductId);
     }
 
     @RequestMapping(value = "sale_cut", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
@@ -49,11 +45,10 @@ public class SaleCutController {
     }
 
     @RequestMapping(value = "sale_cut/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
-    public ResponseEntity<SaleCut> updateSales(@PathVariable("id") int sale_cut_id,
+    public ResponseEntity<SaleCut> updateSales(@PathVariable("id") int saleCutId,
             @RequestBody SaleCut saleCut,
             HttpServletRequest request) {
-        return new ResponseEntity<>(this.service.update(sale_cut_id, saleCut, request), HttpStatus.OK);
+        return new ResponseEntity<>(this.service.update(saleCutId, saleCut, request), HttpStatus.OK);
     }
-
 
 }
