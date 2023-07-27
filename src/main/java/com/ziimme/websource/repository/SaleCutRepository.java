@@ -14,6 +14,6 @@ public interface SaleCutRepository extends JpaRepository<SaleCut, Integer>, JpaS
     @Query(value = "SELECT u FROM SaleCut u WHERE recordStatus = 'A' ORDER BY saleCutId")
     List<SaleCut> findAll();
 
-    @Query(value = "SELECT d FROM SaleCut d WHERE recordStatus = 'A' AND saleProductId = :id ")
+    @Query(value = "SELECT d FROM SaleCut d WHERE recordStatus = 'A' AND saleProductId = :id  ORDER BY saleCutId DESC")
     List<SaleCut> findByIdCut(@Param("id") int saleProductId);
 }
