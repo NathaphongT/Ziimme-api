@@ -42,12 +42,14 @@ public class SaleCutService {
 
         SaleCut _saleCuts = new SaleCut();
         _saleCuts.setSaleCutCount(saleCuts.getSaleCutCount());
+        _saleCuts.setSaleCount(saleCuts.getSaleCount());
         _saleCuts.setSaleCutCourse(saleCuts.getSaleCutCourse());
         _saleCuts.setSaleCutVitamin(saleCuts.getSaleCutVitamin());
         _saleCuts.setSaleCutMark(saleCuts.getSaleCutMark());
         _saleCuts.setSaleCutTherapist(saleCuts.getSaleCutTherapist());
         _saleCuts.setSaleCutDoctor(saleCuts.getSaleCutDoctor());
         _saleCuts.setSaleCutDetail(saleCuts.getSaleCutDetail());
+        _saleCuts.setSaleCutDate(saleCuts.getSaleCutDate());
         _saleCuts.setSaleId(saleCuts.getSaleId());
         _saleCuts.setCourseId(saleCuts.getCourseId());
         _saleCuts.setSaleProductId(saleCuts.getSaleProductId());
@@ -64,12 +66,14 @@ public class SaleCutService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         _saleCuts.setSaleCutCount(saleCuts.getSaleCutCount());
+        _saleCuts.setSaleCount(saleCuts.getSaleCount());
         _saleCuts.setSaleCutCourse(saleCuts.getSaleCutCourse());
         _saleCuts.setSaleCutVitamin(saleCuts.getSaleCutVitamin());
         _saleCuts.setSaleCutMark(saleCuts.getSaleCutMark());
         _saleCuts.setSaleCutTherapist(saleCuts.getSaleCutTherapist());
         _saleCuts.setSaleCutDoctor(saleCuts.getSaleCutDoctor());
         _saleCuts.setSaleCutDetail(saleCuts.getSaleCutDetail());
+        _saleCuts.setSaleCutDate(saleCuts.getSaleCutDate());
         _saleCuts.setSaleId(saleCuts.getSaleId());
         _saleCuts.setCourseId(saleCuts.getCourseId());
         _saleCuts.setSaleProductId(saleCuts.getSaleProductId());

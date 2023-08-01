@@ -20,6 +20,9 @@ public class SaleCut {
     @Column(name = "sale_cut_count")
     private int saleCutCount;
 
+    @Column(name = "sale_count")
+    private int saleCount;
+
     @Column(name = "sale_cut_course")
     private String saleCutCourse;
 
@@ -37,6 +40,9 @@ public class SaleCut {
 
     @Column(name = "sale_cut_detail")
     private String saleCutDetail;
+
+    @Column(name = "sale_cut_date")
+    private Date saleCutDate;
 
     @Column(name = "sale_product_id")
     private int saleProductId;
@@ -63,4 +69,5 @@ public class SaleCut {
 
     @Column(name = "updated_by")
     private String updatedBy;
+
 }
