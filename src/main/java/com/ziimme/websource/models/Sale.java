@@ -18,16 +18,16 @@ public class Sale {
     private int saleId;
 
     @Column(name = "sale_number")
-    private int saleNumber;
+    private String saleNumber;
 
     @Column(name = "sale_pay_balance")
-    private int salePayBalance;
+    private String salePayBalance;
 
     @Column(name = "sale_pay")
-    private int salePay;
+    private String salePay;
 
     @Column(name = "sale_overdue")
-    private int saleOverdue;
+    private String saleOverdue;
 
     @Column(name = "cus_id")
     private int cusId;

@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Immutable;
+import org.springframework.lang.Nullable;
 
 import lombok.Data;
 
@@ -17,13 +17,16 @@ public class SaleAll {
      private int saleProductId;
      private int saleId;
      private int cusId;
+     private int courseId;
      private int saleCount;
-     private String courseId;
-     private String courseNameTh;
+     private String saleCutCount;
+     private String saleNumber;
      private String courseCode;
+     private String courseNameTh;
      private String empFullname;
-     private int saleNumber;
-     private int salePayBalance;
-     private int salePay;
-     private int saleOverdue;
+     private String salePayBalance;
+     private String salePay;
+     private String saleOverdue;
+     private String saleExtraPay;
+     private String salePayOver;
 }
