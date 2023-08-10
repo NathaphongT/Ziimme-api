@@ -55,8 +55,9 @@ public class SalePayService {
 
           SalePay _salePay = new SalePay();
           _salePay.setSaleExtraPay(salePayment.getSaleExtraPay());
+          _salePay.setSalePayDate(salePayment.getSalePayDate());
           _salePay.setSalePayCourse(salePayment.getSalePayCourse());
-          _salePay.setSalePayBaLance(salePayment.getSalePayBaLance());
+          _salePay.setSalePayBalance(salePayment.getSalePayBalance());
           _salePay.setSalePayOver(salePayment.getSalePayOver());
           _salePay.setCourseId(salePayment.getCourseId());
           _salePay.setSaleProductId(salePayment.getSaleProductId());

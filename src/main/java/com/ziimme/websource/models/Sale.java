@@ -20,14 +20,8 @@ public class Sale {
     @Column(name = "sale_number")
     private String saleNumber;
 
-    @Column(name = "sale_pay_balance")
-    private String salePayBalance;
-
-    @Column(name = "sale_pay")
-    private String salePay;
-
-    @Column(name = "sale_overdue")
-    private String saleOverdue;
+    @Column(name = "sale_balance")
+    private String saleBalance;
 
     @Column(name = "cus_id")
     private int cusId;

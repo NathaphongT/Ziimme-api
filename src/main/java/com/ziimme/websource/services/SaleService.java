@@ -13,13 +13,12 @@ import org.springframework.stereotype.Service;
 
 import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
-import com.ziimme.websource.models.Branch;
+
 import com.ziimme.websource.models.Sale;
 import com.ziimme.websource.models.SaleSpecification;
-import com.ziimme.websource.models.Users;
-import com.ziimme.websource.models.UsersSpecification;
+
 import com.ziimme.websource.repository.SaleRepository;
-import com.ziimme.websource.repository.UsersRepository;
+
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
 
@@ -63,9 +62,7 @@ public class SaleService {
 
         Sale _sales = new Sale();
         _sales.setSaleNumber(sale.getSaleNumber());
-        _sales.setSalePayBalance(sale.getSalePayBalance());
-        _sales.setSalePay(sale.getSalePay());
-        _sales.setSaleOverdue(sale.getSaleOverdue());
+        _sales.setSaleBalance(sale.getSaleBalance());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setCreatedBy(username);
@@ -80,9 +77,7 @@ public class SaleService {
         String username = this.tokenAuthenticationService.getUsername(request);
 
         _sales.setSaleNumber(sale.getSaleNumber());
-        _sales.setSalePayBalance(sale.getSalePayBalance());
-        _sales.setSalePay(sale.getSalePay());
-        _sales.setSaleOverdue(sale.getSaleOverdue());
+        _sales.setSaleBalance(sale.getSaleBalance());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setUpdatedBy(username);
