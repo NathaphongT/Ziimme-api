@@ -20,11 +20,14 @@ public class SalePay {
      @Column(name = "sale_extra_pay")
      private int saleExtraPay;
 
+     @Column(name = "sale_pay_date")
+     private Date salePayDate;
+
      @Column(name = "sale_pay_course")
      private String salePayCourse;
 
      @Column(name = "sale_pay_balance")
-     private int salePayBaLance;
+     private int salePayBalance;
 
      @Column(name = "sale_pay_over")
      private int salePayOver;
