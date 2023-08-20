@@ -64,6 +64,7 @@ public class CustomerService {
         _customer.setCusStatus(customer.getCusStatus());
         _customer.setCusTelephone(customer.getCusTelephone());
         _customer.setCusMember(customer.getCusMember());
+        _customer.setCusBranch(customer.getCusBranch());
         _customer.setCusSalary(customer.getCusSalary());
         _customer.setCusPayment(customer.getCusPayment());
         _customer.setCusHouseNumber(customer.getCusHouseNumber());
@@ -96,6 +97,7 @@ public class CustomerService {
         _customer.setCusOccupation(customer.getCusOccupation());
         _customer.setCusStatus(customer.getCusStatus());
         _customer.setCusTelephone(customer.getCusTelephone());
+        _customer.setCusBranch(customer.getCusBranch());
         _customer.setCusMember(customer.getCusMember());
         _customer.setCusSalary(customer.getCusSalary());
         _customer.setCusPayment(customer.getCusPayment());
