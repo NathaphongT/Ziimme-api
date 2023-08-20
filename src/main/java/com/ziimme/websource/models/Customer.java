@@ -25,6 +25,9 @@ public class Customer {
     @Column(name = "cus_member")
     private String cusMember;
 
+    @Column(name = "cus_branch")
+    private int cusBranch;
+
     @Column(name = "cus_prefix")
     private String cusPrefix;
 
