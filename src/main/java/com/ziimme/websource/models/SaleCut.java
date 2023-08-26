@@ -18,7 +18,7 @@ public class SaleCut {
     private int saleCutId;
 
     @Column(name = "sale_cut_count")
-    private int saleCutCount;
+    private String saleCutCount;
 
     @Column(name = "sale_count")
     private int saleCount;
