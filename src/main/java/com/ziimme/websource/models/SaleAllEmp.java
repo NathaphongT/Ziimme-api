@@ -1,5 +1,7 @@
 package com.ziimme.websource.models;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,10 +15,13 @@ import lombok.Data;
 @Table(name = "views_zim_sale_list_employee")
 public class SaleAllEmp {
      @Id
-     private Long saleNumber;
+     private int saleId;
+     private String saleNumber;
      private String cusFullName;
+     private String cusMember;
+     private String cusBranch;
      private String courseId;
-     private int saleProductId;
      private String saleBalance;
+     private Date saleDate;
      private int empId;
 }

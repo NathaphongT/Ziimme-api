@@ -64,6 +64,7 @@ public class SaleService {
         _sales.setSaleBalance(sale.getSaleBalance());
         _sales.setSalePayment(sale.getSalePayment());
         _sales.setSaleOverdue(sale.getSaleOverdue());
+        _sales.setSaleDate(sale.getSaleDate());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setCreatedBy(username);
@@ -81,6 +82,7 @@ public class SaleService {
         _sales.setSaleBalance(sale.getSaleBalance());
         _sales.setSalePayment(sale.getSalePayment());
         _sales.setSaleOverdue(sale.getSaleOverdue());
+        _sales.setSaleDate(sale.getSaleDate());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setUpdatedBy(username);
