@@ -24,6 +24,7 @@ public class SaleAllEmp {
      private String saleBalance;
      private String courseNameEng;
      private String courseNameTh;
+     private String courseCode;
      private Date saleDate;
      private int empId;
 }
