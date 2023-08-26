@@ -16,7 +16,7 @@ import com.ziimme.websource.models.Users;
 
 public interface UsersRepository extends JpaRepository<Users, Integer>, JpaSpecificationExecutor<Users> {
 
-    @Query(value = "SELECT fc FROM Users fc WHERE recordStatus = 'A'")
+    @Query(value = "SELECT u FROM Users u WHERE recordStatus = 'A' ORDER BY userId")
     List<Users> findAll();
 
     Page<Users> findAll(Specification<Users> specification, Pageable pageable);

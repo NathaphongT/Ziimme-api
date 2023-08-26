@@ -29,6 +29,9 @@ public class SalePay {
      @Column(name = "sale_pay_balance")
      private int salePayBalance;
 
+     @Column(name = "sale_last_payment")
+     private int saleLatPayment;
+
      @Column(name = "sale_pay_over")
      private int salePayOver;
 

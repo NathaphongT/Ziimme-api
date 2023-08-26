@@ -23,6 +23,12 @@ public class Sale {
     @Column(name = "sale_balance")
     private String saleBalance;
 
+    @Column(name = "sale_payment")
+    private String salePayment;
+
+    @Column(name = "sale_overdue")
+    private String saleOverdue;
+
     @Column(name = "cus_id")
     private int cusId;
 

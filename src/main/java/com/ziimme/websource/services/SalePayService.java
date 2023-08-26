@@ -58,6 +58,7 @@ public class SalePayService {
           _salePay.setSalePayDate(salePayment.getSalePayDate());
           _salePay.setSalePayCourse(salePayment.getSalePayCourse());
           _salePay.setSalePayBalance(salePayment.getSalePayBalance());
+          _salePay.setSaleLatPayment(salePayment.getSaleLatPayment());
           _salePay.setSalePayOver(salePayment.getSalePayOver());
           _salePay.setCourseId(salePayment.getCourseId());
           _salePay.setSaleProductId(salePayment.getSaleProductId());

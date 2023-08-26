@@ -26,7 +26,7 @@ import com.ziimme.websource.utils.GlobalUtil;
 public class SaleService {
 
     private SaleRepository saleRepository;
-  
+
     private SaleSpecification saleSpecification;
     private TokenAuthenticationService tokenAuthenticationService;
 
@@ -39,7 +39,6 @@ public class SaleService {
         this.saleSpecification = saleSpecification;
         this.tokenAuthenticationService = tokenAuthenticationService;
     }
-
 
     public List<Sale> getAll() {
         return this.saleRepository.findAll();
@@ -63,6 +62,8 @@ public class SaleService {
         Sale _sales = new Sale();
         _sales.setSaleNumber(sale.getSaleNumber());
         _sales.setSaleBalance(sale.getSaleBalance());
+        _sales.setSalePayment(sale.getSalePayment());
+        _sales.setSaleOverdue(sale.getSaleOverdue());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setCreatedBy(username);
@@ -78,6 +79,8 @@ public class SaleService {
 
         _sales.setSaleNumber(sale.getSaleNumber());
         _sales.setSaleBalance(sale.getSaleBalance());
+        _sales.setSalePayment(sale.getSalePayment());
+        _sales.setSaleOverdue(sale.getSaleOverdue());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
         _sales.setUpdatedBy(username);

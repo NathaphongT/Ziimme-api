@@ -25,6 +25,8 @@ public class SaleAll {
      private String courseNameTh;
      private String empFullname;
      private String saleBalance;
+     private String salePayment;
+     private String saleOverdue;
      private String saleExtraPay;
      private String salePayOver;
 }
