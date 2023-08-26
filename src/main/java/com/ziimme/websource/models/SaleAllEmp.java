@@ -23,7 +23,7 @@ public class SaleAllEmp {
      private String courseId;
      private String saleBalance;
      private String courseNameEng;
-     private String courseNameTH;
+     private String courseNameTh;
      private Date saleDate;
      private int empId;
 }
