@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ziimme.websource.models.SaleCut;
 import com.ziimme.websource.models.SalePay;
-import com.ziimme.websource.services.SaleCutService;
 import com.ziimme.websource.services.SalePayService;
 
 @RestController
