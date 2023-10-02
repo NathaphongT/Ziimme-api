@@ -23,6 +23,9 @@ public class SalePay {
      @Column(name = "sale_pay_date")
      private Date salePayDate;
 
+     @Column(name = "sale_pay_detail")
+     private String salePayDetail;
+
      @Column(name = "sale_pay_course")
      private String salePayCourse;
 
@@ -30,7 +33,7 @@ public class SalePay {
      private int salePayBalance;
 
      @Column(name = "sale_last_payment")
-     private int saleLatPayment;
+     private String saleLastPayment;
 
      @Column(name = "sale_pay_over")
      private int salePayOver;

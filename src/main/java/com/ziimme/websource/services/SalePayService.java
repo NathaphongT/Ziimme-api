@@ -10,16 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.ziimme.websource.exception.ResourceNotFoundException;
 import com.ziimme.websource.json.res.ResponseJson;
-import com.ziimme.websource.models.Employee;
-import com.ziimme.websource.models.Sale;
-import com.ziimme.websource.models.SaleCut;
+
 import com.ziimme.websource.models.SalePay;
-import com.ziimme.websource.models.SaleProduct;
+
 import com.ziimme.websource.repository.SalePaymentRepository;
-import com.ziimme.websource.repository.SaleProductRepository;
-import com.ziimme.websource.repository.SaleRepository;
+
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.utils.GlobalUtil;
 
@@ -56,9 +52,10 @@ public class SalePayService {
           SalePay _salePay = new SalePay();
           _salePay.setSaleExtraPay(salePayment.getSaleExtraPay());
           _salePay.setSalePayDate(salePayment.getSalePayDate());
+          _salePay.setSalePayDetail(salePayment.getSalePayDetail());
           _salePay.setSalePayCourse(salePayment.getSalePayCourse());
           _salePay.setSalePayBalance(salePayment.getSalePayBalance());
-          _salePay.setSaleLatPayment(salePayment.getSaleLatPayment());
+          _salePay.setSaleLastPayment(salePayment.getSaleLastPayment());
           _salePay.setSalePayOver(salePayment.getSalePayOver());
           _salePay.setCourseId(salePayment.getCourseId());
           _salePay.setSaleProductId(salePayment.getSaleProductId());

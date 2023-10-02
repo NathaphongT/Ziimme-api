@@ -32,6 +32,9 @@ public class Sale {
     @Column(name = "sale_date")
     private Date saleDate;
 
+    @Column(name = "sale_detail")
+    private String saleDetail;
+
     @Column(name = "cus_id")
     private int cusId;
 

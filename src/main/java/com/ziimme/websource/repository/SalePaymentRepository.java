@@ -15,7 +15,7 @@ public interface SalePaymentRepository extends JpaRepository<SalePay, Integer> {
      @Query(value = "SELECT w FROM SalePay w WHERE recordStatus = 'A' ORDER BY salePayId DESC")
      List<SalePay> findAll();
 
-     @Query(value = "SELECT d FROM SalePay d WHERE recordStatus = 'A' AND saleProductId = :id  ORDER BY salePayId")
+     @Query(value = "SELECT d FROM SalePay d WHERE recordStatus = 'A' AND saleProductId = :id  ORDER BY salePayId DESC")
      List<SalePay> findByIdCut(@Param("id") int saleProductId);
 
      @Query(value = "SELECT d FROM SalePay d WHERE recordStatus = 'A' AND cusId = :id  ORDER BY salePayId DESC")

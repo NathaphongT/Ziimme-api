@@ -29,4 +29,5 @@ public class SaleAll {
      private String saleOverdue;
      private String saleExtraPay;
      private String salePayOver;
+     private String saleDetail;
 }
