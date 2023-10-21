@@ -1,5 +1,7 @@
 package com.ziimme.websource.models;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -30,4 +32,8 @@ public class SaleAll {
      private String saleExtraPay;
      private String salePayOver;
      private String saleDetail;
+     private Date saleDate;
+     private String saleCutDownDetail;
+     private String saleStatus;
+
 }

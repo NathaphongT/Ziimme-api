@@ -57,6 +57,11 @@ public class SaleService {
 
     public Sale create(Sale sale, HttpServletRequest request) throws Exception {
 
+        // check duplicate salenumber name before create
+        if (this.saleRepository.findBySaleName(sale.getSaleNumber()).isPresent()) {
+            throw new Exception("เลขที่เอกสารซ้ำ");
+        }
+
         String username = this.tokenAuthenticationService.getUsername(request);
 
         Sale _sales = new Sale();
@@ -68,6 +73,7 @@ public class SaleService {
         _sales.setSaleDetail(sale.getSaleDetail());
         _sales.setCusId(sale.getCusId());
         _sales.setRecordStatus(GlobalUtil.getActiveStatus());
+        _sales.setSaleStatus(GlobalUtil.getActiveStatus());
         _sales.setCreatedBy(username);
         _sales.setCreatedTime(GlobalUtil.getCurrentDateTime());
         return this.saleRepository.save(_sales);
@@ -106,6 +112,30 @@ public class SaleService {
         _sales.setUpdatedTime(GlobalUtil.getCurrentDateTime());
 
         this.saleRepository.save(_sales);
+    }
+
+    public Sale cutDown(int sale_id, Sale sale, HttpServletRequest request) {
+        Sale _sales = this.saleRepository.findById(sale_id)
+                .orElseThrow(() -> new ResourceNotFoundException("Sale", "id", sale_id));
+
+        String username = this.tokenAuthenticationService.getUsername(request);
+
+        _sales.setSaleNumber(sale.getSaleNumber());
+        _sales.setSaleBalance(sale.getSaleBalance());
+        _sales.setSalePayment(sale.getSalePayment());
+        _sales.setSaleOverdue(sale.getSaleOverdue());
+        _sales.setSaleDate(sale.getSaleDate());
+        _sales.setSaleDetail(sale.getSaleDetail());
+        _sales.setCusId(sale.getCusId());
+        _sales.setSaleCutDownDetail(sale.getSaleCutDownDetail());
+        _sales.setSaleStatus(GlobalUtil.getInActiveStatus());
+        _sales.setRecordStatus(GlobalUtil.getActiveStatus());
+        _sales.setUpdatedBy(username);
+        _sales.setUpdatedTime(GlobalUtil.getCurrentDateTime());
+
+        _sales = this.saleRepository.save(_sales);
+
+        return _sales;
     }
 
     public ResponseEntity<Object> findByIdSale(int saleId) {

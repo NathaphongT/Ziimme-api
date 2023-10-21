@@ -35,11 +35,17 @@ public class Sale {
     @Column(name = "sale_detail")
     private String saleDetail;
 
+     @Column(name = "sale_cut_down_detail")
+    private String saleCutDownDetail;
+
     @Column(name = "cus_id")
     private int cusId;
 
     @Column(name = "record_status")
     private String recordStatus;
+
+    @Column(name = "sale_status")
+    private String saleStatus;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "Asia/Bangkok")
     @Column(name = "created_time")

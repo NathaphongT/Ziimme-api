@@ -38,6 +38,8 @@ public class SaleProductService {
     }
 
     public List<SaleProduct> create(int saleId, List<SaleProduct> saleProduct, HttpServletRequest request) {
+
+       
         this.saleRepository.findById(saleId)
                 .orElseThrow(() -> new ResourceNotFoundException("SaleID", "id", saleId));
 

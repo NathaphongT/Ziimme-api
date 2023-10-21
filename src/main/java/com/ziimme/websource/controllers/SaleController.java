@@ -97,6 +97,13 @@ public class SaleController {
         }
     }
 
+    @RequestMapping(value = "sales_cutdown/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
+    public ResponseEntity<Sale> cutSales(@PathVariable("id") int saleId,
+            @RequestBody Sale sale,
+            HttpServletRequest request) {
+        return new ResponseEntity<>(this.service.cutDown(saleId, sale, request), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "sales/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
     public ResponseEntity<Sale> getSaleById(@PathVariable("id") int saleId) {
         return new ResponseEntity<>(this.service.getById(saleId), HttpStatus.OK);

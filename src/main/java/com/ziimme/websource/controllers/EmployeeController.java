@@ -21,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ziimme.websource.json.res.PageResponse;
-import com.ziimme.websource.models.Course;
 import com.ziimme.websource.models.Employee;
-import com.ziimme.websource.models.Position;
 import com.ziimme.websource.security.TokenAuthenticationService;
 import com.ziimme.websource.services.EmployeeService;
 
