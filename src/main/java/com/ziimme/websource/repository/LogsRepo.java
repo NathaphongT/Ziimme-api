@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.ziimme.websource.models.Logs;
 
-public interface LogsRepo extends JpaRepository<Logs, String> {
+public interface LogsRepo extends JpaRepository<Logs, Long> {
     @Override
     @Query(value = "SELECT l FROM Logs l WHERE record_status = 'A' ORDER BY created_time desc")
     List<Logs> findAll();
