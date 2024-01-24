@@ -21,7 +21,7 @@ public class SaleAll {
      private int cusId;
      private int courseId;
      private int saleCount;
-     private String saleCutCount;
+     private Integer saleCutCount;
      private String saleNumber;
      private String courseCode;
      private String courseNameTh;
