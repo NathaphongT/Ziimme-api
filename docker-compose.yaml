@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: P@ssziimme23
     network_mode: bridge-net 
     volumes:
-     - ./data:/var/lib/mysql
+     - /server/data:/var/lib/mysql
   app:
     build: .
     image: ziimme:main
