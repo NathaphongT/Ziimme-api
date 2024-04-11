@@ -17,8 +17,8 @@ services:
      - /server/data:/var/lib/mysql
   app:
     build: .
-    image: ziimme:main
-    container_name: ziimme-api
+    image: wiimme/service:1.0
+    container_name: wiimme-service
     restart: always
     network_mode: bridge-net
     ports:
