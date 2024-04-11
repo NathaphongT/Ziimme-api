@@ -1,0 +1,25 @@
+version: '3.8' 
+
+services: 
+  mysql:
+    container_name: mysql 
+    image: mysql:8.0
+    restart: always 
+    ports: 
+     - 3306:3306 
+    environment: 
+      MYSQL_ROOT_PASSWORD: p@ssadmin 
+      MYSQL_DATABASE: ziimme 
+      MYSQL_USER: ziimme 
+      MYSQL_PASSWORD: P@ssziimme23
+    network_mode: bridge-net 
+    volumes:
+     - ./data:/var/lib/mysql
+  app:
+    build: .
+    image: ziimme:main
+    container_name: ziimme-api
+    restart: always
+    network_mode: bridge-net
+    ports:
+     - 8080:8080
