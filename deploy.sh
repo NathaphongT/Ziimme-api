@@ -6,6 +6,12 @@ CONTAINER_NAME=ziimme-service
 PORT=8080
 NETWORK=bridge-net
 
+# remove container
+docker rm -f $CONTAINER_NAME
+
+# remove images
+docker rmi $IMAGE_NAME
+
 # build image
 docker build -t $IMAGE_NAME /server/Ziimme-api
 
